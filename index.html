@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cut+Dry · Fortune Fish MN</title>
+<title>Cut+Dry Â· Fortune Fish MN</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -38,7 +38,7 @@
 }
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;font-size:14px}
 
-/* ── LOCK ── */
+/* ââ LOCK ââ */
 #lockScreen{position:fixed;inset:0;background:var(--nav);z-index:1000;display:flex;align-items:center;justify-content:center;}
 .lock-card{background:var(--white);border-radius:16px;padding:40px 44px;width:380px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.3);}
 .lock-logo{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:20px;}
@@ -56,7 +56,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .lock-err{font-size:12px;color:var(--coral);margin-top:8px;min-height:16px;}
 .lock-hint{font-size:11px;color:var(--text3);margin-top:20px;}
 
-/* ── LAYOUT ── */
+/* ââ LAYOUT ââ */
 .layout{display:flex;min-height:100vh;}
 .sidebar{width:64px;background:var(--nav);flex-shrink:0;display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:4px;position:sticky;top:0;height:100vh;}
 .sb-logo{width:40px;height:40px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0;}
@@ -67,7 +67,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .sb-item svg{width:20px;height:20px;}
 .content{flex:1;min-width:0;display:flex;flex-direction:column;}
 
-/* ── TOPBAR ── */
+/* ââ TOPBAR ââ */
 .topbar{background:var(--white);border-bottom:1px solid var(--border);padding:0 24px;display:flex;align-items:center;gap:14px;height:56px;position:sticky;top:0;z-index:100;box-shadow:var(--shadow);}
 .topbar-breadcrumb{font-size:14px;color:var(--text2);display:flex;align-items:center;gap:6px;}
 .topbar-breadcrumb .sep{color:var(--text3);}
@@ -82,7 +82,7 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* ── TABS ── */
+/* ââ TABS ââ */
 .tabs{display:flex;border-bottom:1px solid var(--border);background:var(--white);padding:0 24px;gap:0;overflow-x:auto;}
 .tab{padding:14px 18px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;display:flex;align-items:center;gap:7px;}
 .tab:hover{color:var(--text);}
@@ -91,12 +91,12 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .tab-badge.pop{animation:pop .25s ease;}
 @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
 
-/* ── MAIN ── */
+/* ââ MAIN ââ */
 .main{padding:24px;flex:1;}
 .view{display:none;animation:fadeIn .18s ease;}.view.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── TOP STAT CARDS ── */
+/* ââ TOP STAT CARDS ââ */
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:24px;}
 .kpi{background:var(--white);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);border:1px solid var(--border);}
 .kpi-label{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:10px;}
@@ -104,11 +104,11 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .kpi-sub{font-size:12px;color:var(--text2);}
 .kpi-pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;margin-top:6px;}
 
-/* ── DASHBOARD ROW ── */
+/* ââ DASHBOARD ROW ââ */
 .dash-row{display:grid;grid-template-columns:420px 1fr;gap:20px;margin-bottom:24px;}
 @media(max-width:960px){.dash-row{grid-template-columns:1fr;}}
 
-/* ── STATUS CARD ── */
+/* ââ STATUS CARD ââ */
 .card{background:var(--white);border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;}
 .card-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:4px;}
 .card-sub{font-size:13px;color:var(--text2);margin-bottom:0;}
@@ -120,7 +120,7 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .donut-pct{font-size:28px;font-weight:700;color:var(--green-dark);line-height:1;}
 .donut-lbl{font-size:11px;color:var(--text2);text-align:center;margin-top:3px;line-height:1.3;}
 
-/* ── ACTION ROWS ── */
+/* ââ ACTION ROWS ââ */
 .action-rows{border-top:1px solid var(--border);}
 .action-row{display:flex;align-items:center;padding:14px 24px;border-bottom:1px solid var(--border);gap:16px;transition:background .1s;}
 .action-row:last-child{border-bottom:none;}
@@ -131,7 +131,7 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .action-row-btn{font-size:13px;font-weight:700;color:var(--text);cursor:pointer;white-space:nowrap;padding:4px 0;border:none;background:none;font-family:var(--font);}
 .action-row-btn:hover{color:var(--green-dark);}
 
-/* ── CUSTOMER BASE CHART ── */
+/* ââ CUSTOMER BASE CHART ââ */
 .base-chart-wrap{position:relative;height:240px;padding:16px 24px 0;}
 .base-legend{padding:0 24px 20px;display:flex;flex-direction:column;gap:10px;}
 .base-leg-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;}
@@ -141,7 +141,7 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .base-leg-val{font-weight:600;color:var(--text);}
 .base-leg-pct{font-size:12px;color:var(--text3);}
 
-/* ── LEADERBOARD ── */
+/* ââ LEADERBOARD ââ */
 .leaderboard{display:flex;flex-direction:column;gap:0;background:var(--white);border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;margin-bottom:24px;}
 .lb-hdr-row{display:grid;grid-template-columns:36px 1fr 220px 100px 80px 120px;gap:16px;padding:12px 20px;background:var(--gray-light);border-bottom:1px solid var(--border);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);}
 .lb-row{display:grid;grid-template-columns:36px 1fr 220px 100px 80px 120px;gap:16px;padding:16px 20px;border-bottom:1px solid var(--border);align-items:center;cursor:pointer;transition:background .1s;}
@@ -159,7 +159,7 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .lb-cpo:hover{color:#1d4ed8;}
 .lb-meta{font-size:12px;color:var(--text3);text-align:right;}
 
-/* ── REP CARDS ── */
+/* ââ REP CARDS ââ */
 .rep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
 .rep-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;}
 .rep-card-hdr{padding:16px 18px 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;}
@@ -182,7 +182,7 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .rc-cpo:hover{color:#1d4ed8;}
 .rc-warn{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#B45309;background:#FEF3C7;padding:4px 10px;border-radius:20px;margin-top:8px;}
 
-/* ── ACCOUNTS TABLE ── */
+/* ââ ACCOUNTS TABLE ââ */
 .filters{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center;}
 .search{flex:1;min-width:200px;background:var(--white);border:1px solid var(--border2);color:var(--text);border-radius:8px;font-family:var(--font);font-size:13px;padding:7px 14px;outline:none;height:36px;}
 .search:focus{border-color:var(--green);}
@@ -207,7 +207,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
 .btn-target.on{background:var(--green-light);border-color:var(--green);color:var(--green-dark);}
 .count-badge{font-size:12px;color:var(--text3);margin-left:auto;}
 
-/* ── TARGETS ── */
+/* ââ TARGETS ââ */
 .tgt-hero{background:var(--white);border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);padding:20px 24px;display:flex;align-items:center;gap:32px;margin-bottom:16px;flex-wrap:wrap;}
 .tgt-hero-stat{min-width:80px;}
 .tgt-lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:6px;}
@@ -219,7 +219,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
 .empty-state strong{display:block;font-size:18px;font-weight:700;color:var(--text2);margin-bottom:8px;}
 .empty-state .hint{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-top:14px;}
 
-/* ── REPORT CARD ── */
+/* ââ REPORT CARD ââ */
 .rc-page{background:var(--white);border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;max-width:900px;}
 .rc-page-hdr{background:var(--nav);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;}
 .rc-page-hdr-left{display:flex;align-items:center;gap:14px;}
@@ -263,7 +263,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
 .btn-print{background:var(--green);border:none;color:#fff;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:600;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;}
 .btn-print:hover{background:var(--green-dark);}
 
-/* ── SETUP ── */
+/* ââ SETUP ââ */
 .setup-wrap{max-width:640px;display:flex;flex-direction:column;gap:16px;}
 .setup-card{background:var(--white);border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);padding:24px 28px;}
 .setup-card h2{font-size:16px;font-weight:700;margin-bottom:6px;}
@@ -290,7 +290,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
 .btn-danger{background:transparent;border:1.5px solid #FCA5A5;color:#991B1B;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:600;padding:0 14px;height:34px;cursor:pointer;}
 .btn-danger:hover{border-color:var(--coral);}
 
-/* ── CPO MODAL ── */
+/* ââ CPO MODAL ââ */
 .modal-overlay{position:fixed;inset:0;background:rgba(17,24,39,.6);z-index:500;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .2s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
 .modal{background:var(--white);border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.2);width:100%;max-width:860px;max-height:90vh;display:flex;flex-direction:column;transform:translateY(14px);transition:transform .2s;}
@@ -319,14 +319,14 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
 .ot-cpo{background:var(--green-light);color:var(--green-dark);font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;}
 .ot-rep{background:var(--yellow-light);color:#92400e;font-size:11px;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap;}
 
-/* ── TOAST ── */
+/* ââ TOAST ââ */
 .toast{position:fixed;bottom:24px;right:24px;background:var(--nav);border-radius:10px;padding:12px 18px;font-size:13px;font-weight:500;color:#fff;z-index:999;transform:translateY(80px);opacity:0;transition:all .3s ease;pointer-events:none;display:flex;align-items:center;gap:8px;}
 .toast.show{transform:translateY(0);opacity:1;}
-.toast.ok::before{content:'✓';color:var(--green);}
-.toast.err::before{content:'✕';color:var(--coral);}
+.toast.ok::before{content:'â';color:var(--green);}
+.toast.err::before{content:'â';color:var(--coral);}
 
 
-/* ── HIERARCHY / DSM VIEW ── */
+/* ââ HIERARCHY / DSM VIEW ââ */
 .dsm-toolbar{display:flex;align-items:center;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
 .hier-breadcrumb{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--text2);}
 .hier-breadcrumb .sep{color:var(--text3);font-weight:400;}
@@ -386,7 +386,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
 .dsm-rc-header{background:var(--nav);padding:20px 28px;border-radius:12px 12px 0 0;display:flex;align-items:center;justify-content:space-between;}
 
 
-/* ── RECAP / AI MODAL ── */
+/* ââ RECAP / AI MODAL ââ */
 .recap-modal{max-width:720px;}
 .recap-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:16px;}
 .recap-tab{padding:10px 16px;font-size:13px;font-weight:500;color:var(--text2);cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;white-space:nowrap;}
@@ -431,9 +431,9 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
       </div>
       <span class="lock-logo-text">Cut+Dry</span>
     </div>
-    <div class="lock-sub">Fortune Fish MN · Adoption Insights<br><span style="color:#991B1B;font-weight:600">⚠ Internal use only — contains customer data</span></div>
+    <div class="lock-sub">Fortune Fish MN Â· Adoption Insights<br><span style="color:#991B1B;font-weight:600">â  Internal use only â contains customer data</span></div>
     <label class="lock-label" for="lockInput">Passcode</label>
-    <input class="lock-input" type="password" id="lockInput" maxlength="8" placeholder="· · · · · ·" autocomplete="off">
+    <input class="lock-input" type="password" id="lockInput" maxlength="8" placeholder="Â· Â· Â· Â· Â· Â·" autocomplete="off">
     <button class="lock-btn" onclick="checkLock()">Enter</button>
     <div class="lock-err" id="lockErr"></div>
     <div class="lock-hint">Contact your Cut+Dry rep for access</div>
@@ -479,7 +479,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
         <span class="current" id="breadcrumb">Dashboard</span>
       </div>
       <div class="topbar-right">
-        <div class="live-badge"><div class="live-dot"></div>876 accounts · 03-23-26</div>
+        <div class="live-badge"><div class="live-dot"></div>876 accounts Â· 03-23-26</div>
         <div class="sync-pill"><div class="sync-dot" id="syncDot"></div><span id="syncLbl">not connected</span></div>
         <select class="top-sel" id="repSelect" onchange="updateAll()"></select>
         <select class="top-sel" id="periodSelect" onchange="onPeriodChange()">
@@ -491,7 +491,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
         </button>
         <div class="company-chip">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-          Fortune Fish · MN
+          Fortune Fish Â· MN
           <svg width="11" height="11" viewBox="0 0 12 8" fill="none"><path d="M1 1l5 5 5-5" stroke="#9CA3AF" stroke-width="1.5" stroke-linecap="round"/></svg>
         </div>
       </div>
@@ -505,7 +505,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
         <div style="display:flex;justify-content:flex-end;margin-bottom:16px">
           <button class="btn-gen-recap" onclick="openRecapModal('site','')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M18 2l4 4-4 4"/><path d="M22 2l-4 4"/></svg>
-            ✦ Generate Recap
+            â¦ Generate Recap
           </button>
         </div>
         <div class="dash-row">
@@ -518,7 +518,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
               <div class="donut-chart-wrap">
                 <canvas id="donutChart"></canvas>
                 <div class="donut-center">
-                  <div class="donut-pct" id="donutPct">—</div>
+                  <div class="donut-pct" id="donutPct">â</div>
                   <div class="donut-lbl">Ordered on<br>Cut+Dry</div>
                 </div>
               </div>
@@ -564,7 +564,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
       <!-- ACCOUNTS -->
       <div id="view-accounts" class="view">
         <div class="filters">
-          <input class="search" type="text" id="searchBox" placeholder="Search by name, city, rep, or customer code…" oninput="renderAccounts()">
+          <input class="search" type="text" id="searchBox" placeholder="Search by name, city, rep, or customer codeâ¦" oninput="renderAccounts()">
           <select class="f-sel" id="statusFilter" onchange="renderAccounts()">
             <option value="All">All Statuses</option>
             <option value="Not Invited">Not Invited</option>
@@ -601,11 +601,11 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
             <p>Targets save to a shared Sheet so every rep and DSM reads from the same source. One-time 5-minute setup.</p>
             <div class="setup-steps">
               <div class="step"><div class="step-n">1</div><div class="step-body"><div class="step-lbl">Create a Google Sheet</div><div class="step-desc">Name it "Fortune Fish MN Adoption Tracker".</div></div></div>
-              <div class="step"><div class="step-n">2</div><div class="step-body"><div class="step-lbl">Open Apps Script</div><div class="step-desc"><code>Extensions → Apps Script</code> — delete default code, paste <code>apps-script.gs</code>, save.</div></div></div>
-              <div class="step"><div class="step-n">3</div><div class="step-body"><div class="step-lbl">Deploy as Web App</div><div class="step-desc"><code>Deploy → New deployment</code>. Type: Web app. Execute as: Me. Access: Anyone. Copy URL.</div></div></div>
+              <div class="step"><div class="step-n">2</div><div class="step-body"><div class="step-lbl">Open Apps Script</div><div class="step-desc"><code>Extensions â Apps Script</code> â delete default code, paste <code>apps-script.gs</code>, save.</div></div></div>
+              <div class="step"><div class="step-n">3</div><div class="step-body"><div class="step-lbl">Deploy as Web App</div><div class="step-desc"><code>Deploy â New deployment</code>. Type: Web app. Execute as: Me. Access: Anyone. Copy URL.</div></div></div>
               <div class="step"><div class="step-n">4</div><div class="step-body"><div class="step-lbl">Paste URL and connect</div>
                 <div class="field-row">
-                  <input class="field-input" type="text" id="scriptUrl" placeholder="https://script.google.com/macros/s/…/exec" autocomplete="off">
+                  <input class="field-input" type="text" id="scriptUrl" placeholder="https://script.google.com/macros/s/â¦/exec" autocomplete="off">
                   <button class="btn-connect" onclick="connectSheets()">Connect</button>
                 </div>
                 <div id="connStatus" class="conn-status"></div>
@@ -617,15 +617,15 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
             </div>
           </div>
                     <div class="setup-card">
-            <h2>Gemini AI Recaps <span class="gemini-badge" style="font-size:11px;vertical-align:middle;margin-left:6px">✦ Gemini</span></h2>
-            <p>Add your Gemini API key to enable AI-generated adoption recaps and email drafts. Get a free key at <strong>aistudio.google.com → Get API key</strong>.</p>
+            <h2>Gemini AI Recaps <span class="gemini-badge" style="font-size:11px;vertical-align:middle;margin-left:6px">â¦ Gemini</span></h2>
+            <p>Add your Gemini API key to enable AI-generated adoption recaps and email drafts. Get a free key at <strong>aistudio.google.com â Get API key</strong>.</p>
             <label style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:6px">API Key</label>
             <div class="field-row">
-              <input class="field-input" type="password" id="geminiKeyInput" placeholder="AIzaSy…" autocomplete="off">
+              <input class="field-input" type="password" id="geminiKeyInput" placeholder="AIzaSyâ¦" autocomplete="off">
               <button class="btn-connect" onclick="saveGeminiKey()">Save</button>
             </div>
             <div id="geminiKeyStatus" style="font-size:12px;margin-top:8px;display:none"></div>
-            <div style="font-size:12px;color:var(--text3);margin-top:10px;line-height:1.6">Key is stored locally in your browser only — never sent anywhere except Google's Gemini API directly.</div>
+            <div style="font-size:12px;color:var(--text3);margin-top:10px;line-height:1.6">Key is stored locally in your browser only â never sent anywhere except Google's Gemini API directly.</div>
           </div>
 
           <div class="setup-card">
@@ -635,7 +635,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
               <input class="field-input" type="password" id="newPass" placeholder="New passcode (min 4 chars)" maxlength="8" autocomplete="new-password">
               <button class="btn-connect" onclick="changePasscode()">Save</button>
             </div>
-            <div id="passMsg" style="font-size:12px;color:var(--green-dark);margin-top:8px;display:none">✓ Passcode updated</div>
+            <div id="passMsg" style="font-size:12px;color:var(--green-dark);margin-top:8px;display:none">â Passcode updated</div>
           </div>
         </div>
           <div class="setup-card" style="margin-top:0">
@@ -649,7 +649,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
               </label>
               <button class="btn-cancel-dsm" onclick="clearHierarchy()" style="margin-left:auto">Clear All</button>
             </div>
-            <div class="hier-csv-hint" style="margin-bottom:14px">CSV format: <code>Rep Name,DSM Name,Territory</code> — Territory column is optional for single-layer sites.</div>
+            <div class="hier-csv-hint" style="margin-bottom:14px">CSV format: <code>Rep Name,DSM Name,Territory</code> â Territory column is optional for single-layer sites.</div>
             <div id="addDSMFormWrap" style="display:none;margin-bottom:14px">
               <div class="add-dsm-form">
                 <label>DSM Name</label>
@@ -683,7 +683,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
           <select class="dsm-selector" id="dsmSelector" onchange="renderDSMDash()"></select>
           <button class="btn-gen-recap" id="dsmRecapBtn" onclick="openRecapModal(hierLevel, document.getElementById('dsmSelector').value)">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/><path d="M18 2l4 4-4 4"/><path d="M22 2l-4 4"/></svg>
-            ✦ Generate Recap
+            â¦ Generate Recap
           </button>
           <button class="btn-export" onclick="printDSMReport()">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
@@ -701,11 +701,11 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
       <div>
         <div class="modal-title" id="recapModalTitle">Adoption Recap</div>
         <div style="font-size:12px;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:8px">
-          Fortune Fish MN · <span id="recapModalSub">Generated by Gemini</span>
-          <span class="gemini-badge">✦ Gemini</span>
+          Fortune Fish MN Â· <span id="recapModalSub">Generated by Gemini</span>
+          <span class="gemini-badge">â¦ Gemini</span>
         </div>
       </div>
-      <button class="modal-close" onclick="closeRecapModal()">×</button>
+      <button class="modal-close" onclick="closeRecapModal()">Ã</button>
     </div>
     <div class="modal-body">
       <div class="recap-tabs" id="recapTabs"></div>
@@ -722,7 +722,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="#EA4335" stroke-width="1.5"/><polyline points="22,6 12,13 2,6" stroke="#EA4335" stroke-width="1.5"/></svg>
           Open in Gmail
         </button>
-        <button class="btn-regen" onclick="generateRecap()">↺ Regenerate</button>
+        <button class="btn-regen" onclick="generateRecap()">âº Regenerate</button>
       </div>
     </div>
   </div>
@@ -734,9 +734,9 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
     <div class="modal-hdr">
       <div>
         <div class="modal-title" id="modalTitle">CPO% Breakdown</div>
-        <div style="font-size:12px;color:var(--text3);margin-top:2px">Fortune Fish MN · Week of Mar 16–22, 2026</div>
+        <div style="font-size:12px;color:var(--text3);margin-top:2px">Fortune Fish MN Â· Week of Mar 16â22, 2026</div>
       </div>
-      <button class="modal-close" onclick="closeCPOModal()">×</button>
+      <button class="modal-close" onclick="closeCPOModal()">Ã</button>
     </div>
     <div class="modal-body">
       <div class="cpo-hero" id="cpoHero"></div>
@@ -770,7 +770,7 @@ const COLORS={'Not Invited':'#D1D5DB','Invited':'#F59E0B','Signed Up':'#7C3AED',
 const MAIN_REPS=['Aaron Witchger','Charlie Butwinick','Jeff Pierce','Jonathan Padelford','Josh Carroll','Robert Ramirez','August Vanmeter'];
 const DATES=["2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-21","2026-03-22"];
 
-// ── LOCK ──
+// ââ LOCK ââ
 function getPasscode(){return localStorage.getItem('cd_pass')||'FF2026';}
 function checkLock(){
   const v=document.getElementById('lockInput').value.trim().toUpperCase();
@@ -801,12 +801,12 @@ if(sessionStorage.getItem('cd_auth')){
   window.addEventListener('DOMContentLoaded',initApp);
 }
 
-// ── INIT ──
+// ââ INIT ââ
 function initApp(){
-  rebuildRepSelect();updateAll();
+  try{ rebuildRepSelect();updateAll(); }catch(e){ console.warn('initApp render:',e); }
   // Load saved Gemini key display
-  if(getGeminiKey()){ const ki=document.getElementById('geminiKeyInput'); if(ki) ki.placeholder='Key saved ✓'; }
-  rebuildDSMSelector();renderHierarchySetup();renderDSMDash();
+  if(getGeminiKey()){ const ki=document.getElementById('geminiKeyInput'); if(ki) ki.placeholder='Key saved â'; }
+  try{ rebuildDSMSelector();renderHierarchySetup();renderDSMDash(); }catch(e){ console.warn('initApp DSM:',e); }
   if(scriptUrl){setupSheetsUI();loadTargetsFromSheets();}
 }
 function getFA(){const r=document.getElementById('repSelect').value;return r==='All'?D.accounts:D.accounts.filter(a=>a.rep===r);}
@@ -817,7 +817,7 @@ function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').
 function toast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show '+(type||'ok');setTimeout(()=>t.classList.remove('show'),2600);}
 function bc(st){return{'Not Invited':'s-notinvited','Invited':'s-invited','Signed Up':'s-signed','Ordering':'s-ordering'}[st]||'s-notinvited';}
 
-// ── KPIs ──
+// ââ KPIs ââ
 function renderKPIs(){
   const fa=getFA(),tot=fa.length;
   const ordering=fa.filter(a=>a.status==='Ordering').length;
@@ -829,11 +829,11 @@ function renderKPIs(){
   document.getElementById('kpiGrid').innerHTML=`
     <div class="kpi"><div class="kpi-label">Ordered on Cut+Dry</div><div class="kpi-num" style="color:var(--green-dark)">${ordPct}%</div><div class="kpi-sub">${ordering} of ${tot} eligible accounts</div></div>
     <div class="kpi"><div class="kpi-label">Ready to Invite</div><div class="kpi-num" style="color:var(--yellow)">${eligNI}</div><div class="kpi-sub">Eligible accounts not yet invited</div></div>
-    <div class="kpi"><div class="kpi-label">Invited · Not Signed Up</div><div class="kpi-num" style="color:var(--purple)">${invited}</div><div class="kpi-sub">Send a follow-up reminder</div></div>
-    <div class="kpi"><div class="kpi-label">Signed Up · Not Active</div><div class="kpi-num" style="color:var(--blue)">${su}</div><div class="kpi-sub">Nudge to place first order</div></div>`;
+    <div class="kpi"><div class="kpi-label">Invited Â· Not Signed Up</div><div class="kpi-num" style="color:var(--purple)">${invited}</div><div class="kpi-sub">Send a follow-up reminder</div></div>
+    <div class="kpi"><div class="kpi-label">Signed Up Â· Not Active</div><div class="kpi-num" style="color:var(--blue)">${su}</div><div class="kpi-sub">Nudge to place first order</div></div>`;
 }
 
-// ── DASHBOARD ──
+// ââ DASHBOARD ââ
 let donutInst=null, baseInst=null;
 function renderDashboard(){
   const fa=getFA(),tot=fa.length;
@@ -858,8 +858,8 @@ function renderDashboard(){
     <div class="action-row"><div class="action-row-dot" style="background:#9CA3AF"></div><div class="action-row-lbl">Ordered vs Eligible</div><div class="action-row-count">${ordVsElig}</div><div></div></div>
     <div class="action-row"><div class="action-row-dot" style="background:#EF4444"></div><div class="action-row-lbl">Missing Contact Info</div><div class="action-row-count">${nci}</div><button class="action-row-btn" onclick="filterTo('Not Invited','No')">Add Details</button></div>
     <div class="action-row"><div class="action-row-dot" style="background:${COLORS['Invited']}"></div><div class="action-row-lbl">Ready to Invite</div><div class="action-row-count">${rti}</div><button class="action-row-btn" onclick="filterTo('Not Invited','Yes')">Send Invite</button></div>
-    <div class="action-row"><div class="action-row-dot" style="background:${COLORS['Signed Up']}"></div><div class="action-row-lbl">Invited · Not Signed Up</div><div class="action-row-count">${inv}</div><button class="action-row-btn" onclick="filterTo('Invited','All')">Send Reminder</button></div>
-    <div class="action-row"><div class="action-row-dot" style="background:${COLORS['Ordering']}"></div><div class="action-row-lbl">Signed Up · Not Active</div><div class="action-row-count">${su}</div><button class="action-row-btn" onclick="filterTo('Signed Up','All')">Nudge Customer</button></div>`;
+    <div class="action-row"><div class="action-row-dot" style="background:${COLORS['Signed Up']}"></div><div class="action-row-lbl">Invited Â· Not Signed Up</div><div class="action-row-count">${inv}</div><button class="action-row-btn" onclick="filterTo('Invited','All')">Send Reminder</button></div>
+    <div class="action-row"><div class="action-row-dot" style="background:${COLORS['Ordering']}"></div><div class="action-row-lbl">Signed Up Â· Not Active</div><div class="action-row-count">${su}</div><button class="action-row-btn" onclick="filterTo('Signed Up','All')">Nudge Customer</button></div>`;
   // Base chart
   const labels=['Total Customers','Active Customers','Eligible for C+D','Ordered on C+D'];
   const vals=[tot,tot,fa.filter(a=>a.eligible==='Yes').length,ordering];
@@ -883,7 +883,7 @@ function filterTo(status,elig){
   showTabById('accounts');renderAccounts();
 }
 
-// ── LEADERBOARD ──
+// ââ LEADERBOARD ââ
 function renderLeaderboard(){
   const repSel=document.getElementById('repSelect').value;
   const reps=(repSel==='All'?MAIN_REPS:MAIN_REPS.filter(r=>r===repSel))
@@ -895,17 +895,17 @@ function renderLeaderboard(){
     const segs=STATUSES.map(st=>{const cnt=s.counts[st]||0;const w=Math.max(2,Math.round(cnt/tot*200));return`<div class="lb-seg" style="background:${COLORS[st]};width:${w}px;opacity:${st==='Ordering'?1:.7}"></div>`;}).join('');
     return`<div class="lb-row${i===0?' top':''}" onclick="drillRep('${rep}')">
       <div class="lb-rank${i===0?' gold':''}">${i+1}</div>
-      <div><div class="lb-name">${rep}</div><div class="lb-name-sub">${s.counts['Not Invited']} not invited · ${s.eligible_ni} eligible untouched</div></div>
+      <div><div class="lb-name">${rep}</div><div class="lb-name-sub">${s.counts['Not Invited']} not invited Â· ${s.eligible_ni} eligible untouched</div></div>
       <div class="lb-funnel">${segs}</div>
       <div class="lb-pct" style="color:var(--green-dark)">${s.ordering_pct}%</div>
-      <div class="lb-cpo" onclick="event.stopPropagation();openCPOModal('${rep}')">${cpo.pct||'—'}%</div>
+      <div class="lb-cpo" onclick="event.stopPropagation();openCPOModal('${rep}')">${cpo.pct||'â'}%</div>
       <div class="lb-meta">${tot} accounts</div>
     </div>`;
   }).join('');
 }
 function drillRep(rep){document.getElementById('repSelect').value=rep;showTabById('reps');updateAll();}
 
-// ── REP CARDS ──
+// ââ REP CARDS ââ
 function renderRepCards(){
   const repSel=document.getElementById('repSelect').value;
   const reps=repSel==='All'?MAIN_REPS:MAIN_REPS.filter(r=>r===repSel);
@@ -916,19 +916,19 @@ function renderRepCards(){
     const sparkMax=Math.max(...spark,1);
     const sparkBars=spark.map(v=>{const h=Math.max(2,Math.round(v/sparkMax*22));return`<div class="rc-spark-bar" style="height:${h}px;opacity:${0.35+v/sparkMax*.65}"></div>`;}).join('');
     const rows=STATUSES.map(st=>{const cnt=s.counts[st]||0;const pct=s.total?Math.round(cnt/s.total*100):0;return`<div class="rc-status-row"><div class="rc-dot" style="background:${COLORS[st]}"></div><div class="rc-s-lbl">${st}</div><div class="rc-bar-outer"><div class="rc-bar-inner" style="width:${pct}%;background:${COLORS[st]}"></div></div><div class="rc-cnt">${cnt}</div><div class="rc-pct2">${pct}%</div></div>`;}).join('');
-    const warn=s.eligible_ni>10?`<div class="rc-warn">⚠ ${s.eligible_ni} eligible accounts never invited</div>`:'';
+    const warn=s.eligible_ni>10?`<div class="rc-warn">â  ${s.eligible_ni} eligible accounts never invited</div>`:'';
     return`<div class="rep-card">
-      <div class="rep-card-hdr"><div><div class="rc-name">${rep}</div><div class="rc-sub">${s.total} accounts · ${s.engaged_pct}% engaged</div>${warn}</div><div><div class="rc-pct">${s.ordering_pct}%</div><div class="rc-pct-lbl">ordering</div></div></div>
+      <div class="rep-card-hdr"><div><div class="rc-name">${rep}</div><div class="rc-sub">${s.total} accounts Â· ${s.engaged_pct}% engaged</div>${warn}</div><div><div class="rc-pct">${s.ordering_pct}%</div><div class="rc-pct-lbl">ordering</div></div></div>
       <div class="rep-card-body">${rows}</div>
       <div class="rep-card-footer"><div class="rc-spark">${sparkBars}</div><div style="display:flex;gap:8px;align-items:center">
-          <div class="rc-cpo" onclick="openCPOModal('${rep}')">CPO ${cpo.pct||'—'}% →</div>
-          <button class="btn-gen-recap" style="height:28px;padding:0 10px;font-size:11px" onclick="openRecapModal('rep','${rep}')">✦ Recap</button>
+          <div class="rc-cpo" onclick="openCPOModal('${rep}')">CPO ${cpo.pct||'â'}% â</div>
+          <button class="btn-gen-recap" style="height:28px;padding:0 10px;font-size:11px" onclick="openRecapModal('rep','${rep}')">â¦ Recap</button>
         </div></div>
     </div>`;
   }).join('');
 }
 
-// ── REPORT CARD ──
+// ââ REPORT CARD ââ
 function renderReportCard(){
   const fa=getFA(),tot=fa.length;
   const ordering=fa.filter(a=>a.status==='Ordering').length;
@@ -959,7 +959,7 @@ function renderReportCard(){
       <td>${s.total}</td>
       <td><div class="funnel-mini">${segs}</div></td>
       <td style="font-weight:700;color:var(--green-dark)">${s.ordering_pct}%</td>
-      <td>${cpo.pct||'—'}%</td>
+      <td>${cpo.pct||'â'}%</td>
       <td style="color:${ni>50?'#991B1B':'var(--text2)'}">${ni}</td>
       <td>${s.eligible_ni}</td>
       <td>${priority(s)}</td>
@@ -973,15 +973,15 @@ function renderReportCard(){
     <div class="rc-page-hdr">
       <div class="rc-page-hdr-left">
         <div class="rc-mark"><svg viewBox="0 0 22 22" fill="none"><path d="M4 11h14M11 4l7 7-7 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div><div class="rc-page-title">Fortune Fish MN · Adoption Report Card</div><div class="rc-page-sub">Cut+Dry Platform — ${repSel==='All'?'All Reps':repSel}</div></div>
+        <div><div class="rc-page-title">Fortune Fish MN Â· Adoption Report Card</div><div class="rc-page-sub">Cut+Dry Platform â ${repSel==='All'?'All Reps':repSel}</div></div>
       </div>
-      <div class="rc-page-date">${period} · Generated ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</div>
+      <div class="rc-page-date">${period} Â· Generated ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</div>
     </div>
     <div class="rc-kpi-row">
       <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ordering Rate</div><div class="rc-kpi-val" style="color:var(--green-dark)">${ordPct}%</div><div class="rc-kpi-sub">${ordering} of ${tot} accounts active</div></div>
-      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ready to Invite</div><div class="rc-kpi-val" style="color:var(--yellow)">${eligNI}</div><div class="rc-kpi-sub">Eligible · never contacted</div></div>
-      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Pipeline Stuck</div><div class="rc-kpi-val" style="color:var(--purple)">${invited+su}</div><div class="rc-kpi-sub">${invited} invited · ${su} signed up not ordering</div></div>
-      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">CPO% (Mar 16–22)</div><div class="rc-kpi-val" style="color:var(--blue)">${cpoPct}%</div><div class="rc-kpi-sub">Orders placed by customers</div></div>
+      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ready to Invite</div><div class="rc-kpi-val" style="color:var(--yellow)">${eligNI}</div><div class="rc-kpi-sub">Eligible Â· never contacted</div></div>
+      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Pipeline Stuck</div><div class="rc-kpi-val" style="color:var(--purple)">${invited+su}</div><div class="rc-kpi-sub">${invited} invited Â· ${su} signed up not ordering</div></div>
+      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">CPO% (Mar 16â22)</div><div class="rc-kpi-val" style="color:var(--blue)">${cpoPct}%</div><div class="rc-kpi-sub">Orders placed by customers</div></div>
     </div>
     <div class="rc-section">
       <div class="rc-section-title">Rep Performance Scorecard</div>
@@ -993,29 +993,29 @@ function renderReportCard(){
     <div class="rc-section">
       <div class="rc-section-title">Actionable Pipeline</div>
       <div class="rc-pipeline-row">
-        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--yellow)"></div><div><div class="rc-pipe-lbl">Ready to Invite</div><div class="rc-pipe-sub">Eligible accounts with contact info — send invite now</div></div></div>
-        <div><div class="rc-pipe-count" style="color:var(--yellow)">${fa.filter(a=>a.status==='Not Invited'&&a.eligible==='Yes'&&a.u1n).length}</div><div class="rc-pipe-action">Send Invite →</div></div>
+        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--yellow)"></div><div><div class="rc-pipe-lbl">Ready to Invite</div><div class="rc-pipe-sub">Eligible accounts with contact info â send invite now</div></div></div>
+        <div><div class="rc-pipe-count" style="color:var(--yellow)">${fa.filter(a=>a.status==='Not Invited'&&a.eligible==='Yes'&&a.u1n).length}</div><div class="rc-pipe-action">Send Invite â</div></div>
       </div>
       <div class="rc-pipeline-row">
         <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--coral)"></div><div><div class="rc-pipe-lbl">Missing Contact Info</div><div class="rc-pipe-sub">Eligible but no user loaded in Cut+Dry</div></div></div>
-        <div><div class="rc-pipe-count" style="color:var(--coral)">${fa.filter(a=>a.status==='Not Invited'&&a.eligible==='Yes'&&!a.u1n).length}</div><div class="rc-pipe-action">Add Details →</div></div>
+        <div><div class="rc-pipe-count" style="color:var(--coral)">${fa.filter(a=>a.status==='Not Invited'&&a.eligible==='Yes'&&!a.u1n).length}</div><div class="rc-pipe-action">Add Details â</div></div>
       </div>
       <div class="rc-pipeline-row">
-        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--purple)"></div><div><div class="rc-pipe-lbl">Invited · Not Signed Up</div><div class="rc-pipe-sub">Received invite, haven't created account — send reminder</div></div></div>
-        <div><div class="rc-pipe-count" style="color:var(--purple)">${invited}</div><div class="rc-pipe-action">Send Reminder →</div></div>
+        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--purple)"></div><div><div class="rc-pipe-lbl">Invited Â· Not Signed Up</div><div class="rc-pipe-sub">Received invite, haven't created account â send reminder</div></div></div>
+        <div><div class="rc-pipe-count" style="color:var(--purple)">${invited}</div><div class="rc-pipe-action">Send Reminder â</div></div>
       </div>
       <div class="rc-pipeline-row">
-        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--blue)"></div><div><div class="rc-pipe-lbl">Signed Up · Not Active</div><div class="rc-pipe-sub">Have an account but haven't placed an order — nudge them</div></div></div>
-        <div><div class="rc-pipe-count" style="color:var(--blue)">${su}</div><div class="rc-pipe-action">Nudge Customer →</div></div>
+        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--blue)"></div><div><div class="rc-pipe-lbl">Signed Up Â· Not Active</div><div class="rc-pipe-sub">Have an account but haven't placed an order â nudge them</div></div></div>
+        <div><div class="rc-pipe-count" style="color:var(--blue)">${su}</div><div class="rc-pipe-action">Nudge Customer â</div></div>
       </div>
     </div>
     <div class="rc-footer">
-      <div class="rc-footer-lbl">Cut+Dry Adoption Tracker · Fortune Fish MN · Data as of 03-23-2026</div>
+      <div class="rc-footer-lbl">Cut+Dry Adoption Tracker Â· Fortune Fish MN Â· Data as of 03-23-2026</div>
       <div class="rc-footer-lbl" style="color:var(--green-dark);font-weight:600">Powered by Cut+Dry</div>
     </div>`;
 }
 
-// ── ACCOUNTS ──
+// ââ ACCOUNTS ââ
 function renderAccounts(){
   const rep=document.getElementById('repSelect').value;
   const q=(document.getElementById('searchBox').value||'').toLowerCase();
@@ -1031,22 +1031,22 @@ function renderAccounts(){
   document.getElementById('acctCount').textContent=`${rows.length} accounts`;
   document.getElementById('acctBody').innerHTML=rows.slice(0,300).map(a=>`
     <tr>
-      <td><div class="a-name">${esc(a.name)}</div><div class="a-loc">${esc(a.city)}${a.state?', '+esc(a.state):''} · ${esc(a.id)}</div></td>
+      <td><div class="a-name">${esc(a.name)}</div><div class="a-loc">${esc(a.city)}${a.state?', '+esc(a.state):''} Â· ${esc(a.id)}</div></td>
       <td style="font-size:12px;color:var(--text2)">${esc(a.rep)}</td>
       <td><span class="badge ${bc(a.status)}">${a.status}</span></td>
-      <td style="font-size:12px;color:var(--text2)">${a.last_order||'—'}</td>
+      <td style="font-size:12px;color:var(--text2)">${a.last_order||'â'}</td>
       <td>${a.u1n?`<div style="font-size:12px;font-weight:500">${esc(a.u1n)}</div><div style="font-size:11px;color:var(--text3)">${esc(a.u1e)}</div>`:'<span style="font-size:12px;color:var(--text3)">No user</span>'}</td>
-      <td><button class="btn-target${targets[a.id]?' on':''}" onclick="toggleTarget('${a.id}','${esc(a.name).replace(/'/g,'&#39;')}','${a.rep}')">${targets[a.id]?'★ Targeted':'☆ Target'}</button></td>
+      <td><button class="btn-target${targets[a.id]?' on':''}" onclick="toggleTarget('${a.id}','${esc(a.name).replace(/'/g,'&#39;')}','${a.rep}')">${targets[a.id]?'â Targeted':'â Target'}</button></td>
     </tr>`).join('');
   if(rows.length>300)document.getElementById('acctBody').innerHTML+=`<tr><td colspan="6" style="text-align:center;padding:16px;font-size:12px;color:var(--text3)">Showing 300 of ${rows.length}. Refine filters to see more.</td></tr>`;
 }
 
-// ── TARGETS ──
+// ââ TARGETS ââ
 function renderTargets(){
   const period=document.getElementById('periodSelect').value;
   const tgts=D.accounts.filter(a=>targets[a.id]);
   const hero=document.getElementById('tgtHero'),content=document.getElementById('tgtContent');
-  if(!tgts.length){hero.style.display='none';content.innerHTML=`<div class="empty-state"><strong>No targets set for ${period}</strong>Go to Accounts and click ☆ Target on accounts you're going after.<div class="hint">Filter by "Not Invited" + "Eligible" for quick wins</div></div>`;return;}
+  if(!tgts.length){hero.style.display='none';content.innerHTML=`<div class="empty-state"><strong>No targets set for ${period}</strong>Go to Accounts and click â Target on accounts you're going after.<div class="hint">Filter by "Not Invited" + "Eligible" for quick wins</div></div>`;return;}
   const ordering=tgts.filter(a=>a.status==='Ordering').length;
   const pct=Math.round(ordering/tgts.length*100);
   hero.style.display='flex';hero.className='tgt-hero';
@@ -1057,8 +1057,8 @@ function renderTargets(){
   groups.forEach(rep=>{
     const repRows=tgts.filter(a=>a.rep===rep);if(!repRows.length)return;
     const ro=repRows.filter(a=>a.status==='Ordering').length;
-    if(repSel==='All')html+=`<div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin:0 0 8px;padding:0 4px">${esc(rep)} — ${ro}/${repRows.length} ordering</div>`;
-    html+=`<div class="tbl-wrap" style="margin-bottom:16px;max-height:none"><table class="tbl"><thead><tr><th>Account</th><th>Status</th><th>Last Order</th><th>City</th><th></th></tr></thead><tbody>${repRows.map(a=>`<tr><td><div class="a-name">${esc(a.name)}</div></td><td><span class="badge ${bc(a.status)}">${a.status}</span></td><td style="font-size:12px;color:var(--text2)">${a.last_order||'—'}</td><td style="font-size:12px;color:var(--text2)">${esc(a.city)}</td><td><button class="btn-target on" onclick="toggleTarget('${a.id}','','')">★ Targeted</button></td></tr>`).join('')}</tbody></table></div>`;
+    if(repSel==='All')html+=`<div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin:0 0 8px;padding:0 4px">${esc(rep)} â ${ro}/${repRows.length} ordering</div>`;
+    html+=`<div class="tbl-wrap" style="margin-bottom:16px;max-height:none"><table class="tbl"><thead><tr><th>Account</th><th>Status</th><th>Last Order</th><th>City</th><th></th></tr></thead><tbody>${repRows.map(a=>`<tr><td><div class="a-name">${esc(a.name)}</div></td><td><span class="badge ${bc(a.status)}">${a.status}</span></td><td style="font-size:12px;color:var(--text2)">${a.last_order||'â'}</td><td style="font-size:12px;color:var(--text2)">${esc(a.city)}</td><td><button class="btn-target on" onclick="toggleTarget('${a.id}','','')">â Targeted</button></td></tr>`).join('')}</tbody></table></div>`;
   });
   content.innerHTML=html;
 }
@@ -1070,7 +1070,7 @@ function toggleTarget(id,name,rep){
   if(scriptUrl)saveTargetToSheets(id,active,name,rep);
 }
 function updateBadge(pop=false){
-  const n=Object.keys(targets).length;const el=document.getElementById('tgtBadge');el.textContent=n;
+  const n=Object.keys(targets).length;const el=document.getElementById('tgtBadge');if(!el)return;el.textContent=n;
   if(pop){el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
 }
 function exportTargets(){
@@ -1084,14 +1084,14 @@ function exportTargets(){
   const el=document.createElement('a');el.href=url;el.download=`targets-${period.replace(/\s+/g,'-').toLowerCase()}.csv`;el.click();URL.revokeObjectURL(url);
 }
 
-// ── CPO MODAL ──
+// ââ CPO MODAL ââ
 function openCPOModal(rep){
   rep=rep||'All';
   document.getElementById('cpoOverlay').classList.add('open');
   const reps=rep==='All'?Object.keys(D.cpo):[rep];
   let tot=0,cust=0;reps.forEach(r=>{const c=D.cpo[r]||{};tot+=c.total||0;cust+=c.customer||0;});
   const repO=tot-cust;const pct=tot?(cust/tot*100).toFixed(1):0;
-  document.getElementById('modalTitle').textContent=rep==='All'?'CPO% — All Reps':`CPO% — ${rep}`;
+  document.getElementById('modalTitle').textContent=rep==='All'?'CPO% â All Reps':`CPO% â ${rep}`;
   document.getElementById('cpoHero').innerHTML=`<div class="cpo-stat"><div class="cpo-stat-lbl">Total Orders</div><div class="cpo-stat-num">${tot}</div></div><div class="cpo-stat"><div class="cpo-stat-lbl">Customer Placed</div><div class="cpo-stat-num" style="color:var(--green-dark)">${cust}</div></div><div class="cpo-stat"><div class="cpo-stat-lbl">Rep Placed</div><div class="cpo-stat-num" style="color:#92400e">${repO}</div></div><div class="cpo-stat"><div class="cpo-stat-lbl">CPO%</div><div class="cpo-stat-num" style="color:var(--blue)">${pct}%</div></div>`;
   document.getElementById('cpoSplitCust').style.width=(tot?(cust/tot*100):0).toFixed(1)+'%';
   const orders=rep==='All'?Object.values(CPO_ORDERS).flat():(CPO_ORDERS[rep]||[]);
@@ -1104,7 +1104,7 @@ function openCPOModal(rep){
 }
 function closeCPOModal(){document.getElementById('cpoOverlay').classList.remove('open');}
 
-// ── TABS ──
+// ââ TABS ââ
 const BREADCRUMBS={'dashboard':'Dashboard','leaderboard':'Leaderboard','reps':'Rep Cards','reportcard':'Report Card','dsm':'DSM View','accounts':'Accounts','targets':'Targets','setup':'Setup'};
 function showTab(id,el,short){
   document.querySelectorAll('.sb-item').forEach(s=>s.classList.remove('active'));
@@ -1119,17 +1119,17 @@ function showTabById(id){
   document.querySelectorAll('.sb-item').forEach((s,i)=>s.classList.toggle('active',i===idx[id]));
 }
 
-// ── SHEETS ──
+// ââ SHEETS ââ
 function setSyncState(s,l){const d=document.getElementById('syncDot'),lb=document.getElementById('syncLbl');d.className='sync-dot'+(s?' '+s:'');lb.textContent=l;}
 function setupSheetsUI(){document.getElementById('scriptUrl').value=scriptUrl;document.getElementById('scriptUrl').classList.add('saved');document.getElementById('btnDisconnect').style.display='block';updateConnSummary();setSyncState('ok','connected');}
-async function loadTargetsFromSheets(){if(!scriptUrl)return;setSyncState('syncing','loading…');try{const p=encodeURIComponent(document.getElementById('periodSelect').value);const res=await fetch(`${scriptUrl}?action=getTargets&period=${p}`);const j=await res.json();if(j.ok){targets={};(j.targets||[]).forEach(t=>{targets[t.id]={period:t.period,at:t.at};});setSyncState('ok','synced');updateAll();}else setSyncState('err','error');}catch(e){setSyncState('err','unreachable');}}
-async function saveTargetToSheets(id,active,name,rep){if(!scriptUrl)return;setSyncState('syncing','saving…');const a=D.accounts.find(x=>x.id===id)||{};try{const body={action:active?'addTarget':'removeTarget',id,customer:name||a.name,rep:rep||a.rep,location:a.city,status:a.status,period:document.getElementById('periodSelect').value,at:Date.now()};await fetch(scriptUrl,{method:'POST',body:JSON.stringify(body),headers:{'Content-Type':'text/plain'}});setSyncState('ok','saved');}catch(e){setSyncState('err','save failed');}}
-async function connectSheets(){const url=document.getElementById('scriptUrl').value.trim();if(!url){toast('Paste your URL first','err');return;}const st=document.getElementById('connStatus');st.style.display='block';st.className='conn-status';st.textContent='Testing…';try{const res=await fetch(`${url}?action=ping`);const j=await res.json();if(j.ok){scriptUrl=url;localStorage.setItem('cd_script_url',url);st.className='conn-status ok';st.textContent='Connected!';document.getElementById('scriptUrl').classList.add('saved');setSyncState('ok','connected');updateConnSummary();document.getElementById('btnDisconnect').style.display='block';toast('Sheets connected');if(D.accounts.length)loadTargetsFromSheets();}else throw new Error();}catch(e){st.className='conn-status err';st.textContent='Could not connect. Make sure access is set to "Anyone".';}}
+async function loadTargetsFromSheets(){if(!scriptUrl)return;setSyncState('syncing','loadingâ¦');try{const p=encodeURIComponent(document.getElementById('periodSelect').value);const res=await fetch(`${scriptUrl}?action=getTargets&period=${p}`);const j=await res.json();if(j.ok){targets={};(j.targets||[]).forEach(t=>{targets[t.id]={period:t.period,at:t.at};});setSyncState('ok','synced');updateAll();}else setSyncState('err','error');}catch(e){setSyncState('err','unreachable');}}
+async function saveTargetToSheets(id,active,name,rep){if(!scriptUrl)return;setSyncState('syncing','savingâ¦');const a=D.accounts.find(x=>x.id===id)||{};try{const body={action:active?'addTarget':'removeTarget',id,customer:name||a.name,rep:rep||a.rep,location:a.city,status:a.status,period:document.getElementById('periodSelect').value,at:Date.now()};await fetch(scriptUrl,{method:'POST',body:JSON.stringify(body),headers:{'Content-Type':'text/plain'}});setSyncState('ok','saved');}catch(e){setSyncState('err','save failed');}}
+async function connectSheets(){const url=document.getElementById('scriptUrl').value.trim();if(!url){toast('Paste your URL first','err');return;}const st=document.getElementById('connStatus');st.style.display='block';st.className='conn-status';st.textContent='Testingâ¦';try{const res=await fetch(`${url}?action=ping`);const j=await res.json();if(j.ok){scriptUrl=url;localStorage.setItem('cd_script_url',url);st.className='conn-status ok';st.textContent='Connected!';document.getElementById('scriptUrl').classList.add('saved');setSyncState('ok','connected');updateConnSummary();document.getElementById('btnDisconnect').style.display='block';toast('Sheets connected');if(D.accounts.length)loadTargetsFromSheets();}else throw new Error();}catch(e){st.className='conn-status err';st.textContent='Could not connect. Make sure access is set to "Anyone".';}}
 function disconnectSheets(){if(!confirm('Disconnect?'))return;scriptUrl='';localStorage.removeItem('cd_script_url');setSyncState('','not connected');updateConnSummary();document.getElementById('btnDisconnect').style.display='none';}
-function updateConnSummary(){document.getElementById('connSummary').textContent=scriptUrl?'Connected: '+scriptUrl.slice(0,50)+'…':'Not connected';}
+function updateConnSummary(){document.getElementById('connSummary').textContent=scriptUrl?'Connected: '+scriptUrl.slice(0,50)+'â¦':'Not connected';}
 
 
-// ── HIERARCHY STATE ────────────────────────────────────────────────
+// ââ HIERARCHY STATE ââââââââââââââââââââââââââââââââââââââââââââââââ
 let hierLevel = 'territory'; // 'territory' or 'dsm'
 let editingDSM = null; // name of DSM being edited
 
@@ -1159,7 +1159,7 @@ function getRepsFor(h, mode, name){
   return mode==='dsm' ? getRepsForDSM(h,name) : getAllRepsForTerritory(h,name);
 }
 
-// ── DSM SELECTOR ───────────────────────────────────────────────────
+// ââ DSM SELECTOR âââââââââââââââââââââââââââââââââââââââââââââââââââ
 function setHierLevel(level){
   hierLevel = level;
   document.getElementById('btnTerr').classList.toggle('active', level==='territory');
@@ -1174,10 +1174,10 @@ function rebuildDSMSelector(){
   const opts = hierLevel==='territory' ? getTerritories(h) : getDSMNames(h);
   sel.innerHTML = opts.length
     ? opts.map(n=>`<option value="${n}">${n}</option>`).join('')
-    : '<option value="">— No hierarchy set up —</option>';
+    : '<option value="">â No hierarchy set up â</option>';
 }
 
-// ── DSM DASHBOARD ──────────────────────────────────────────────────
+// ââ DSM DASHBOARD ââââââââââââââââââââââââââââââââââââââââââââââââââ
 function renderDSMDash(){
   const h=loadHierarchy();
   const hasData = Object.keys(h.dsms).length > 0;
@@ -1187,7 +1187,7 @@ function renderDSMDash(){
     cont.innerHTML=`<div class="dsm-empty">
       <strong>No hierarchy set up yet</strong>
       <p>Assign reps to DSMs and territories in Setup to unlock the rollup dashboard. Takes about 2 minutes.</p>
-      <button class="btn-setup-hier" onclick="showTabById('setup');document.getElementById('dsmNameInput').scrollIntoView({behavior:'smooth'})">Set Up Hierarchy →</button>
+      <button class="btn-setup-hier" onclick="showTabById('setup');document.getElementById('dsmNameInput').scrollIntoView({behavior:'smooth'})">Set Up Hierarchy â</button>
     </div>`;
     return;
   }
@@ -1211,8 +1211,8 @@ function renderDSMDash(){
 
   // Build DSM label for sub-header
   const subLabel = hierLevel==='territory'
-    ? `Territory: ${name} · ${getDSMsForTerritory(h,name).length} DSMs · ${reps.length} reps`
-    : `DSM: ${name} · ${h.dsms[name]?.territory||'No territory'} · ${reps.length} reps`;
+    ? `Territory: ${name} Â· ${getDSMsForTerritory(h,name).length} DSMs Â· ${reps.length} reps`
+    : `DSM: ${name} Â· ${h.dsms[name]?.territory||'No territory'} Â· ${reps.length} reps`;
 
   // Rep comparison rows
   const repRows = reps.map(rep=>{
@@ -1225,7 +1225,7 @@ function renderDSMDash(){
       <td><div class="mini-funnel">${segs}</div></td>
       <td style="font-weight:700;color:var(--green-dark)">${s.ordering_pct}%</td>
       <td>${s.counts['Not Invited']||0}</td>
-      <td style="color:var(--blue);font-weight:600">${cpo.pct||'—'}%</td>
+      <td style="color:var(--blue);font-weight:600">${cpo.pct||'â'}%</td>
     </tr>`;
   }).join('');
 
@@ -1233,8 +1233,8 @@ function renderDSMDash(){
     <div style="font-size:12px;color:var(--text3);font-weight:500;margin-bottom:14px">${subLabel}</div>
     <div class="kpi-grid" style="margin-bottom:20px">
       <div class="kpi"><div class="kpi-label">Ordering Rate</div><div class="kpi-num" style="color:var(--green-dark)">${ordPct}%</div><div class="kpi-sub">${ordering} of ${tot} accounts</div></div>
-      <div class="kpi"><div class="kpi-label">Ready to Invite</div><div class="kpi-num" style="color:var(--yellow)">${eligNI}</div><div class="kpi-sub">Eligible · never contacted</div></div>
-      <div class="kpi"><div class="kpi-label">Pipeline Stuck</div><div class="kpi-num" style="color:var(--purple)">${invited+su}</div><div class="kpi-sub">${invited} invited · ${su} signed up</div></div>
+      <div class="kpi"><div class="kpi-label">Ready to Invite</div><div class="kpi-num" style="color:var(--yellow)">${eligNI}</div><div class="kpi-sub">Eligible Â· never contacted</div></div>
+      <div class="kpi"><div class="kpi-label">Pipeline Stuck</div><div class="kpi-num" style="color:var(--purple)">${invited+su}</div><div class="kpi-sub">${invited} invited Â· ${su} signed up</div></div>
       <div class="kpi"><div class="kpi-label">CPO% Rollup</div><div class="kpi-num" style="color:var(--blue)">${cpoPct}%</div><div class="kpi-sub">${cpoCust} of ${cpoTot} orders</div></div>
     </div>
     <div class="dsm-dash-row">
@@ -1300,7 +1300,7 @@ function renderDSMReportCard(name, accts, reps, h){
       <td>${s.total}</td>
       <td><div class="funnel-mini">${segs}</div></td>
       <td style="font-weight:700;color:var(--green-dark)">${s.ordering_pct}%</td>
-      <td>${cpo.pct||'—'}%</td>
+      <td>${cpo.pct||'â'}%</td>
       <td style="color:${(s.counts['Not Invited']||0)>50?'#991B1B':'var(--text2)'}">${s.counts['Not Invited']||0}</td>
       <td>${s.eligible_ni}</td>
       <td>${priority(s)}</td>
@@ -1309,7 +1309,7 @@ function renderDSMReportCard(name, accts, reps, h){
 
   const dsmLabel = hierLevel==='territory'
     ? `Territory: ${name}`
-    : `DSM: ${name}${h.dsms[name]?.territory?' · '+h.dsms[name].territory:''}`;
+    : `DSM: ${name}${h.dsms[name]?.territory?' Â· '+h.dsms[name].territory:''}`;
 
   document.getElementById('dsmReportCard').innerHTML=`
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
@@ -1319,25 +1319,25 @@ function renderDSMReportCard(name, accts, reps, h){
       <div class="dsm-rc-header">
         <div style="display:flex;align-items:center;gap:12px">
           <div class="rc-mark"><svg viewBox="0 0 22 22" fill="none"><path d="M4 11h14M11 4l7 7-7 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div><div style="font-size:18px;font-weight:700;color:#fff">Fortune Fish MN · Adoption Report Card</div><div style="font-size:13px;color:rgba(255,255,255,.55)">${dsmLabel}</div></div>
+          <div><div style="font-size:18px;font-weight:700;color:#fff">Fortune Fish MN Â· Adoption Report Card</div><div style="font-size:13px;color:rgba(255,255,255,.55)">${dsmLabel}</div></div>
         </div>
-        <div style="font-size:12px;color:rgba(255,255,255,.4)">${period} · ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.4)">${period} Â· ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</div>
       </div>
       <div class="rc-kpi-row">
         <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ordering Rate</div><div class="rc-kpi-val" style="color:var(--green-dark)">${ordPct}%</div><div class="rc-kpi-sub">${ordering} of ${tot} accounts</div></div>
-        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ready to Invite</div><div class="rc-kpi-val" style="color:var(--yellow)">${eligNI}</div><div class="rc-kpi-sub">Eligible · never contacted</div></div>
-        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Pipeline Stuck</div><div class="rc-kpi-val" style="color:var(--purple)">${invited+su}</div><div class="rc-kpi-sub">${invited} invited · ${su} signed up</div></div>
+        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ready to Invite</div><div class="rc-kpi-val" style="color:var(--yellow)">${eligNI}</div><div class="rc-kpi-sub">Eligible Â· never contacted</div></div>
+        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Pipeline Stuck</div><div class="rc-kpi-val" style="color:var(--purple)">${invited+su}</div><div class="rc-kpi-sub">${invited} invited Â· ${su} signed up</div></div>
         <div class="rc-kpi-cell"><div class="rc-kpi-lbl">CPO% Rollup</div><div class="rc-kpi-val" style="color:var(--blue)">${cpoPct}%</div><div class="rc-kpi-sub">${cpoTot} orders week of Mar 16</div></div>
       </div>
       <div class="rc-section">
-        <div class="rc-section-title">Rep Scorecard — ${dsmLabel}</div>
+        <div class="rc-section-title">Rep Scorecard â ${dsmLabel}</div>
         <table class="rc-rep-tbl">
           <thead><tr><th>Rep</th><th>Accounts</th><th>Funnel</th><th>Ordering %</th><th>CPO%</th><th>Not Invited</th><th>Eligible NI</th><th>Priority</th></tr></thead>
           <tbody>${repRows}</tbody>
         </table>
       </div>
       <div class="rc-footer">
-        <div class="rc-footer-lbl">Cut+Dry Adoption Tracker · Fortune Fish MN · Data as of 03-23-2026</div>
+        <div class="rc-footer-lbl">Cut+Dry Adoption Tracker Â· Fortune Fish MN Â· Data as of 03-23-2026</div>
         <div class="rc-footer-lbl" style="color:var(--green-dark);font-weight:600">Powered by Cut+Dry</div>
       </div>
     </div>`;
@@ -1345,7 +1345,7 @@ function renderDSMReportCard(name, accts, reps, h){
 
 function printDSMReport(){ window.print(); }
 
-// ── HIERARCHY SETUP UI ─────────────────────────────────────────────
+// ââ HIERARCHY SETUP UI âââââââââââââââââââââââââââââââââââââââââââââ
 function renderHierarchySetup(){
   const h = loadHierarchy();
   const dsms = getDSMNames(h);
@@ -1358,7 +1358,7 @@ function renderHierarchySetup(){
       const repChips = (d.reps||[]).map(r=>`<span class="rep-chip">${r}</span>`).join('');
       return`<div class="hier-entry-row">
         <div class="hier-entry-main">
-          <div class="hier-entry-name">${dsm}${d.territory?` <span style="font-size:11px;color:var(--text3);font-weight:400">· ${d.territory}</span>`:''}</div>
+          <div class="hier-entry-name">${dsm}${d.territory?` <span style="font-size:11px;color:var(--text3);font-weight:400">Â· ${d.territory}</span>`:''}</div>
           <div class="hier-entry-reps">${repChips||'<span style="font-size:11px;color:var(--text3)">No reps assigned</span>'}</div>
         </div>
         <button class="btn-edit-dsm" onclick="editDSMEntry('${dsm}')">Edit</button>
@@ -1376,11 +1376,11 @@ function renderHierarchySetup(){
         const repChips = (h.dsms[dsm]?.reps||[]).map(r=>`<span class="rep-chip">${r}</span>`).join('');
         return`<div class="org-dsm-row"><div class="org-dsm-box">${dsm}</div><div class="org-reps-list">${repChips}</div></div>`;
       }).join('');
-      return`<div><div class="org-terr">📍 ${t}</div><div style="padding:8px 0 0">${dsmRows}</div></div>`;
+      return`<div><div class="org-terr">ð ${t}</div><div style="padding:8px 0 0">${dsmRows}</div></div>`;
     }).join('');
     treeWrap.innerHTML=`<div style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:8px">Org Chart Preview</div><div class="org-tree">${treeHTML}</div>`;
   } else if(dsms.length){
-    // No territories — flat DSM list
+    // No territories â flat DSM list
     const flatRows = dsms.map(dsm=>{
       const repChips=(h.dsms[dsm]?.reps||[]).map(r=>`<span class="rep-chip">${r}</span>`).join('');
       return`<div class="org-dsm-row" style="padding-left:0"><div class="org-dsm-box">${dsm}</div><div class="org-reps-list">${repChips}</div></div>`;
@@ -1486,7 +1486,7 @@ function parseHierarchyCSV(e){
 
 
 
-// ── GEMINI AI RECAPS ──────────────────────────────────────────────
+// ââ GEMINI AI RECAPS ââââââââââââââââââââââââââââââââââââââââââââââ
 function getGeminiKey(){ return localStorage.getItem('cd_gemini_key')||''; }
 function saveGeminiKey(){
   const v = document.getElementById('geminiKeyInput').value.trim();
@@ -1494,7 +1494,7 @@ function saveGeminiKey(){
   localStorage.setItem('cd_gemini_key', v);
   const st = document.getElementById('geminiKeyStatus');
   st.style.display='block'; st.style.color='var(--green-dark)';
-  st.textContent='✓ Key saved. AI recaps are now enabled.';
+  st.textContent='â Key saved. AI recaps are now enabled.';
   document.getElementById('geminiKeyInput').value='';
   setTimeout(()=>st.style.display='none', 3000);
   toast('Gemini key saved','ok');
@@ -1513,8 +1513,8 @@ function openRecapModal(type, name){
   // Set title
   const titles = {
     site: 'Site-Level Adoption Recap',
-    dsm:  `DSM Recap — ${name}`,
-    rep:  `Rep Scorecard — ${name}`
+    dsm:  `DSM Recap â ${name}`,
+    rep:  `Rep Scorecard â ${name}`
   };
   document.getElementById('recapModalTitle').textContent = titles[type]||'Adoption Recap';
   document.getElementById('recapModalSub').textContent = new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
@@ -1543,7 +1543,7 @@ function closeRecapModal(){ document.getElementById('recapOverlay').classList.re
 function showNoKeyNotice(){
   document.getElementById('recapBody').innerHTML = `<div class="no-key-notice">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <div>No Gemini API key found. <a onclick="closeRecapModal();showTabById('setup')">Add your key in Setup →</a><br>Get a free key at <strong>aistudio.google.com</strong> — takes 2 minutes.</div>
+    <div>No Gemini API key found. <a onclick="closeRecapModal();showTabById('setup')">Add your key in Setup â</a><br>Get a free key at <strong>aistudio.google.com</strong> â takes 2 minutes.</div>
   </div>`;
 }
 
@@ -1614,7 +1614,7 @@ ${repLines}`;
 Accounts: ${s?.total||0} total | ${s?.counts?.['Ordering']||0} ordering (${s?.ordering_pct||0}%) | ${s?.counts?.['Not Invited']||0} not invited (${s?.eligible_ni||0} eligible untouched)
 Funnel: Invited ${s?.counts?.['Invited']||0} | Signed Up ${s?.counts?.['Signed Up']||0} | Ordering ${s?.counts?.['Ordering']||0}
 Orders this week: ${c.total||0} total, ${c.customer||0} customer-placed (${c.pct||0}% CPO), ${c.rep||0} rep-placed
-Order volume trend (Mon-Sun): ${spark.join(', ')} — ${sparkTrend}`;
+Order volume trend (Mon-Sun): ${spark.join(', ')} â ${sparkTrend}`;
     tone = 'peer-to-peer, encouraging but direct, specific with numbers';
     recipient = `${name}`;
   }
@@ -1700,7 +1700,7 @@ function copyRecap(){
 }
 
 function openInGmail(){
-  const subject = encodeURIComponent(recapGeneratedSubject||'Cut+Dry Adoption Update — Fortune Fish MN');
+  const subject = encodeURIComponent(recapGeneratedSubject||'Cut+Dry Adoption Update â Fortune Fish MN');
   const body = encodeURIComponent(document.getElementById('recapBody').textContent);
   window.open(`https://mail.google.com/mail/?view=cm&fs=1&su=${subject}&body=${body}`,'_blank');
 }
