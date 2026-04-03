@@ -1574,8 +1574,24 @@ function renderKPIs(){
   const invited=fa.filter(a=>a.status==='Invited').length;
   const su=fa.filter(a=>a.status==='Signed Up').length;
   const ordPct=tot?Math.round(ordering/tot*100):0;
+  // CPO rollup across all reps
+  let cpoTot=0,cpoCust=0,cpoCS=0;
+  MAIN_REPS.forEach(r=>{const c=D.cpo[r]||{};cpoTot+=c.total||0;cpoCust+=c.customer||0;cpoCS+=c.cs_facilitated||0;});
+  const cpoPct=cpoTot?Math.round(cpoCust/cpoTot*100):null;
+  const cpoTile = cpoPct!=null
+    ? `<div class="kpi" style="cursor:pointer" onclick="openCPOModal('All')">
+        <div class="kpi-label">Customer Placed Orders*</div>
+        <div class="kpi-num" style="color:var(--blue)">${cpoPct}%</div>
+        <div class="kpi-sub">${cpoCust} of ${cpoTot} orders self-placed${cpoCS>0?` · ${cpoCS} CS`:''}</div>
+       </div>`
+    : `<div class="kpi">
+        <div class="kpi-label">Customer Placed Orders</div>
+        <div class="kpi-num" style="color:var(--text3);font-size:18px;padding-top:6px">—</div>
+        <div class="kpi-sub" style="margin-top:4px"><a onclick="showTabById('setup')" style="color:var(--blue);cursor:pointer;font-weight:600">Upload Orders Report</a></div>
+       </div>`;
   document.getElementById('kpiGrid').innerHTML=`
     <div class="kpi"><div class="kpi-label">Ordered on Cut+Dry</div><div class="kpi-num" style="color:var(--green-dark)">${ordPct}%</div><div class="kpi-sub">${ordering} of ${tot} eligible accounts</div></div>
+    ${cpoTile}
     <div class="kpi"><div class="kpi-label">Ready to Invite</div><div class="kpi-num" style="color:var(--yellow)">${eligNI}</div><div class="kpi-sub">Eligible accounts not yet invited</div></div>
     <div class="kpi"><div class="kpi-label">Invited · Not Signed Up</div><div class="kpi-num" style="color:var(--purple)">${invited}</div><div class="kpi-sub">Send a follow-up reminder</div></div>
     <div class="kpi"><div class="kpi-label">Signed Up · Not Active</div><div class="kpi-num" style="color:var(--blue)">${su}</div><div class="kpi-sub">Nudge to place first order</div></div>
