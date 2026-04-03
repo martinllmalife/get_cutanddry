@@ -741,6 +741,11 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
             </div>
             <div id="passMsg" style="font-size:12px;color:var(--green-dark);margin-top:8px;display:none">✓ Passcode updated</div>
           </div>
+          <div class="setup-card">
+            <h2>Hidden Reps</h2>
+            <p>Reps hidden from the leaderboard and rep cards. Useful for test accounts or reps with too few accounts to be meaningful.</p>
+            <div id="hiddenRepsList" style="margin-top:10px"></div>
+          </div>
         </div>
           <div class="setup-card" id="dpSetupCard">
             <h2>Distribution Partners</h2>
@@ -1014,6 +1019,20 @@ async function loadDPSettings(){
   const {data} = await sb.from('dp_settings').select('*').eq('dp_id',activeDPId).maybeSingle();
   const tdi = document.getElementById('targetDateInput');
   if(tdi) tdi.value = data?.target_date || '';
+  // Load hidden reps
+  try {
+    const {data:hr} = await sb.from('dp_settings').select('value').eq('dp_id',activeDPId).eq('key','hidden_reps').maybeSingle();
+    HIDDEN_REPS = new Set(hr?.value ? JSON.parse(hr.value) : []);
+  } catch(e){ HIDDEN_REPS = new Set(); }
+}
+
+async function toggleHideRep(rep){
+  if(HIDDEN_REPS.has(rep)) HIDDEN_REPS.delete(rep);
+  else HIDDEN_REPS.add(rep);
+  await sb.from('dp_settings').upsert({dp_id:activeDPId,key:'hidden_reps',value:JSON.stringify([...HIDDEN_REPS])},{onConflict:'dp_id,key'});
+  updateAll();
+  renderHiddenRepsList();
+  toast(HIDDEN_REPS.has(rep)?`${rep.split(' ')[0]} hidden`:`${rep.split(' ')[0]} restored`,'ok');
 }
 
 async function saveDPSettings(){
@@ -1067,6 +1086,7 @@ let scriptUrl=localStorage.getItem('cd_script_url')||'';
 const STATUSES=['Not Invited','Invited','Signed Up','Ordering'];
 const COLORS={'Not Invited':'#D1D5DB','Invited':'#F59E0B','Signed Up':'#7C3AED','Ordering':'#00A876'};
 let MAIN_REPS=['Aaron Witchger','Charlie Butwinick','Jeff Pierce','Jonathan Padelford','Josh Carroll','Robert Ramirez','August Vanmeter']; // rebuilt from data in computeD()
+let HIDDEN_REPS=new Set(); // reps hidden from leaderboard + rep cards; persisted in dp_settings
 const DATES=["2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-21","2026-03-22"];
 
 // ── LOCK ──
@@ -1517,7 +1537,20 @@ function computeD(){
   D.spark=spark;
   D.dates=DATES;
 }
-function updateAll(){computeD();renderKPIs();renderDashboard();renderLeaderboard();renderRepCards();renderReportCard();renderAccounts();renderTargets();updateBadge();}
+function renderHiddenRepsList(){
+  const el=document.getElementById('hiddenRepsList');
+  if(!el)return;
+  if(HIDDEN_REPS.size===0){
+    el.innerHTML='<div style="font-size:13px;color:var(--text3)">No reps hidden.</div>';
+    return;
+  }
+  el.innerHTML=[...HIDDEN_REPS].map(rep=>`
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--gray-light);border-radius:8px;margin-bottom:6px">
+      <span style="font-size:13px;font-weight:600">${esc(rep)}</span>
+      <button onclick="toggleHideRep('${rep}')" class="btn-connect" style="height:26px;padding:0 12px;font-size:11px">Restore</button>
+    </div>`).join('');
+}
+function updateAll(){computeD();renderKPIs();renderDashboard();renderLeaderboard();renderRepCards();renderReportCard();renderAccounts();renderTargets();updateBadge();renderHiddenRepsList();}
 function onPeriodChange(){updateAll();if(scriptUrl)loadTargetsFromSheets();}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function toast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show '+(type||'ok');setTimeout(()=>t.classList.remove('show'),2600);}
@@ -1630,7 +1663,7 @@ function filterTo(status,elig){
 // ── LEADERBOARD ──
 function renderLeaderboard(){
   const repSel=document.getElementById('repSelect').value;
-  const reps=(repSel==='All'?MAIN_REPS:MAIN_REPS.filter(r=>r===repSel))
+  const reps=(repSel==='All'?MAIN_REPS.filter(r=>!HIDDEN_REPS.has(r)):MAIN_REPS.filter(r=>r===repSel&&!HIDDEN_REPS.has(r)))
     .sort((a,b)=>(D.rep_summary[b]?.ordering_pct||0)-(D.rep_summary[a]?.ordering_pct||0));
   document.getElementById('lbBody').innerHTML=reps.map((rep,i)=>{
     const s=D.rep_summary[rep];if(!s)return'';
@@ -1652,7 +1685,7 @@ function drillRep(rep){document.getElementById('repSelect').value=rep;showTabByI
 // ── REP CARDS ──
 function renderRepCards(){
   const repSel=document.getElementById('repSelect').value;
-  const reps=repSel==='All'?MAIN_REPS:MAIN_REPS.filter(r=>r===repSel);
+  const reps=(repSel==='All'?MAIN_REPS:MAIN_REPS.filter(r=>r===repSel)).filter(r=>!HIDDEN_REPS.has(r));
   document.getElementById('repCards').innerHTML=reps.map(rep=>{
     const s=D.rep_summary[rep];if(!s)return'';
     const cpo=D.cpo[rep]||{};
@@ -1662,7 +1695,7 @@ function renderRepCards(){
     const rows=STATUSES.map(st=>{const cnt=s.counts[st]||0;const pct=s.total?Math.round(cnt/s.total*100):0;return`<div class="rc-status-row"><div class="rc-dot" style="background:${COLORS[st]}"></div><div class="rc-s-lbl">${st}</div><div class="rc-bar-outer"><div class="rc-bar-inner" style="width:${pct}%;background:${COLORS[st]}"></div></div><div class="rc-cnt">${cnt}</div><div class="rc-pct2">${pct}%</div></div>`;}).join('');
     const warn=s.eligible_ni>10?`<div class="rc-warn">⚠ ${s.eligible_ni} eligible accounts never invited</div>`:'';
     return`<div class="rep-card">
-      <div class="rep-card-hdr"><div><div class="rc-name">${rep}</div><div class="rc-sub">${s.total} accounts · ${s.engaged_pct}% engaged</div>${warn}</div>
+      <div class="rep-card-hdr"><div style="display:flex;align-items:flex-start;justify-content:space-between;width:100%;gap:8px"><div><div class="rc-name">${rep}</div><div class="rc-sub">${s.total} accounts · ${s.engaged_pct}% engaged</div>${warn}</div><button onclick="toggleHideRep('${rep}')" title="Hide from dashboard" style="flex-shrink:0;background:none;border:none;cursor:pointer;padding:2px 4px;color:var(--text3);font-size:11px;opacity:.5;line-height:1;margin-top:1px" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=.5">Hide</button></div>
         <div class="rc-metrics">
           <div class="rc-metric"><div class="rc-metric-num" style="color:var(--green-dark)">${s.ordering_pct}%</div><div class="rc-metric-lbl">Ordering</div></div>
           <div class="rc-metric-divider"></div>
