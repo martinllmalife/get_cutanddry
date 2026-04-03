@@ -1156,20 +1156,30 @@ async function migrateLocalStorageToSupabase(){
 
 // ── Orders Report: CPO% calculation ─────────────────────────────────────
 // Determines if an order was placed by the rep or by the customer.
-// Matches Order Placed By against rep first names from Sales Rep(s) field.
+// Matches Order Placed By against rep names from Sales Rep(s) field.
+// Rules: exact first-name match OR full rep name present in placed_by.
+// Avoids false positives like "Aaron Arko" matching rep "Aaron Jones",
+// "Chris" matching "Christy LeFlore", or "Eve" matching "Steve Young".
 function isRepPlaced(placedBy, salesRepsStr){
   const placed = (placedBy||'').toLowerCase().trim();
   if(!placed) return false;
-  // Filter out territory/marketplace entries, keep only person names
   const reps = (salesRepsStr||'').split(',')
     .map(r=>r.trim().toLowerCase())
-    .filter(r=>r.length>0 && !r.includes('marketplace') && !r.includes('market place'));
+    .filter(r=>r.length>0 && !r.includes('marketplace') && !r.includes('market place') && r!=='-');
   return reps.some(repName=>{
-    const repFirst = repName.split(' ')[0];
-    if(repFirst.length < 3) return false; // skip single-letter or very short names
-    // Check if placed_by contains the rep's first name, or rep name contains placed_by's first name
-    const placedFirst = placed.split(' ')[0];
-    return placed.includes(repFirst) || (placedFirst.length >= 3 && repFirst.includes(placedFirst));
+    const parts = repName.split(/\s+/);
+    const repFirst = parts[0];
+    if(repFirst.length < 3) return false;
+    // 1. Exact first name only (rep typed just their first name)
+    if(placed === repFirst) return true;
+    // 2. Full rep name appears in placed_by (e.g. "Gary Fast" or "GARY FAST")
+    if(placed.includes(repName)) return true;
+    // 3. placed_by starts with rep first+last (handles "Jeff Pierce - Manager" etc.)
+    if(parts.length >= 2){
+      const repLast = parts[parts.length-1];
+      if(placed.startsWith(repFirst) && placed.includes(repLast)) return true;
+    }
+    return false;
   });
 }
 
