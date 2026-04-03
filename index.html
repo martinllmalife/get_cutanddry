@@ -468,25 +468,24 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
   <div class="lock-card">
     <div class="lock-logo" style="justify-content:center;margin-bottom:24px;">
       <!-- Single integrated SVG: GET arc curves around the C, arrow points up -->
-      <svg width="188" height="64" viewBox="-18 -24 188 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="196" height="70" viewBox="-22 -30 196 70" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <!-- Eggplant purple from Canva: #372255 → #261540 -->
-          <linearGradient id="getArcG" gradientUnits="userSpaceOnUse" x1="-4.4" y1="25.5" x2="14.7" y2="-7.5">
+          <linearGradient id="getArcG" gradientUnits="userSpaceOnUse" x1="-6.1" y1="26.5" x2="14.7" y2="-9.5">
             <stop offset="0%" stop-color="#4A3070"/>
             <stop offset="100%" stop-color="#261540"/>
           </linearGradient>
-          <!-- Arc centerline at radius 22 from C center (14.7,14.5), 8→12 o'clock CCW -->
-          <path id="getLockArc" d="M -4.4 25.5 A 22 22 0 0 0 14.7 -7.5"/>
+          <!-- Arc centerline radius 25 from C center (14.7,14.5), 8→12 o'clock CCW -->
+          <path id="getLockArc" d="M -6.1 26.5 A 25 25 0 0 0 14.7 -10.5"/>
         </defs>
-        <!-- GET arc band as thick stroke wrapping outside of the C -->
-        <path d="M -4.4 25.5 A 22 22 0 0 0 14.7 -7.5"
-              stroke="url(#getArcG)" stroke-width="12" stroke-linecap="round" fill="none"/>
+        <!-- GET arc band — thicker stroke so text is clearly readable -->
+        <path d="M -6.1 26.5 A 25 25 0 0 0 14.7 -10.5"
+              stroke="url(#getArcG)" stroke-width="16" stroke-linecap="round" fill="none"/>
         <!-- Upward arrowhead at 12 o'clock tip -->
-        <path d="M 14.7 -21 L 8.2 -13 L 21.2 -13 Z" fill="#261540"/>
+        <path d="M 14.7 -26 L 7 -18.5 L 22.4 -18.5 Z" fill="#261540"/>
         <!-- GET text following the arc -->
-        <text fill="#DCFE07" font-size="8.5" font-weight="900" letter-spacing="2.2"
+        <text fill="#DCFE07" font-size="12" font-weight="900" letter-spacing="3"
               font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">
-          <textPath href="#getLockArc" startOffset="20%">GET</textPath>
+          <textPath href="#getLockArc" startOffset="18%">GET</textPath>
         </text>
         <!-- Cut+Dry plus icon (unchanged colors) -->
         <path d="M72.2518 20.8003L79.5394 20.8003L79.5394 13.5545L72.2518 13.5545L72.2518 20.8003Z" fill="#999BA7"/>
