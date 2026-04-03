@@ -1054,7 +1054,7 @@ function renderKPIs(){
 function renderGoalKPI(currentPct){
   const targetDate = localStorage.getItem('cd_target_date');
   if(!targetDate){
-    return '<div class="kpi"><div class="kpi-label">80% Goal</div><div class="kpi-num" style="color:var(--text3);font-size:16px;padding-top:4px">—</div><div class="kpi-sub" style="margin-top:6px"><a onclick="showTabById('setup')" style="color:var(--green-dark);cursor:pointer;font-weight:600">Set target date in Setup</a></div></div>';
+    return '<div class="kpi"><div class="kpi-label">80% Goal</div><div class="kpi-num" style="color:var(--text3);font-size:16px;padding-top:4px">—</div><div class="kpi-sub" style="margin-top:6px"><a onclick="showTabById(&quot;setup&quot;)" style="color:var(--green-dark);cursor:pointer;font-weight:600">Set target date in Setup</a></div></div>';
   }
   const target = new Date(targetDate);
   const now = new Date();
