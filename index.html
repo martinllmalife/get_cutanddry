@@ -1270,8 +1270,7 @@ async function handleOrdersUpload(event){
     let rows = [];
     if(file.name.endsWith('.csv')){
       const text = await file.text();
-      const lines = text.replace(/^﻿/,'').trim().split('
-');
+      const lines = text.replace(/^﻿/,'').trim().split('\n');
       const header = parseCSVRow(lines[0]).map(h=>h.toLowerCase().trim().replace(/"/g,''));
       const repIdx = header.indexOf('sales rep(s)');
       const placedIdx = header.indexOf('order placed by');
