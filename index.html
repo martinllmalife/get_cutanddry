@@ -721,7 +721,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
       <div id="view-setup" class="view">
         <div class="setup-wrap">
           <div class="setup-card">
-            <h2>AI-Powered Recaps <span class="gemini-badge" style="font-size:11px;vertical-align:middle;margin-left:6px">✦ Gemini 1.5 Flash</span></h2>
+            <h2>AI-Powered Recaps <span class="gemini-badge" id="geminiModelBadge" style="font-size:11px;vertical-align:middle;margin-left:6px">✦ Gemini</span></h2>
             <p>Add your Gemini API key to enable AI-generated adoption recaps and email drafts. Get a free key at <strong>aistudio.google.com/app/apikey</strong>.</p>
             <label style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:6px">API Key</label>
             <div class="field-row">
@@ -729,7 +729,14 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
               <button class="btn-connect" onclick="saveGeminiKey()">Save</button>
             </div>
             <div id="geminiKeyStatus" style="font-size:12px;margin-top:8px;display:none"></div>
-            <div style="font-size:12px;color:var(--text3);margin-top:10px;line-height:1.6">Key is stored locally in your browser only — never sent anywhere except OpenAI's API directly.</div>
+            <label style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);display:block;margin-top:14px;margin-bottom:6px">Model</label>
+            <div class="field-row">
+              <input class="field-input" id="geminiModelInput" placeholder="e.g. gemini-2.0-flash-lite" autocomplete="off">
+              <button class="btn-connect" onclick="saveGeminiModel()">Save</button>
+              <button class="btn-connect" style="background:var(--white);color:var(--text2);border-color:var(--border2)" onclick="listGeminiModels()">List Models</button>
+            </div>
+            <div id="geminiModelStatus" style="font-size:12px;margin-top:8px;display:none;line-height:1.6"></div>
+            <div style="font-size:12px;color:var(--text3);margin-top:10px;line-height:1.6">Key is stored locally in your browser only. If recaps fail with a model error, click <strong>List Models</strong> to see what your API key supports.</div>
           </div>
 
           <div class="setup-card">
@@ -1487,6 +1494,8 @@ async function initApp(){
     rebuildRepSelect();
     updateAll();
     if(getAIKey()){ const ki=document.getElementById('geminiKeyInput'); if(ki) ki.placeholder='Key saved ✓'; }
+    const mi=document.getElementById('geminiModelInput'); if(mi) mi.placeholder=getGeminiModel();
+    const badge=document.getElementById('geminiModelBadge'); if(badge) badge.textContent='✦ '+getGeminiModel();
     try{ rebuildDSMSelector();renderHierarchySetup();renderDSMDash(); }catch(e){ console.warn('initApp DSM:',e); }
     renderUploadHistory();
     await loadDPSettings();
@@ -2368,16 +2377,53 @@ function parseHierarchyCSV(e){
 // ── GEMINI AI RECAPS ──────────────────────────────────────────────
 function getAIKey(){ return localStorage.getItem('cd_gemini_key')||''; }
 function getGeminiKey(){ return getAIKey(); } // legacy alias
+const DEFAULT_GEMINI_MODEL = 'gemini-2.0-flash-lite';
+function getGeminiModel(){ return localStorage.getItem('cd_gemini_model')||DEFAULT_GEMINI_MODEL; }
+
 function saveGeminiKey(){
   const v = document.getElementById('geminiKeyInput').value.trim();
   if(!v){ toast('Paste your Gemini API key first','err'); return; }
   localStorage.setItem('cd_gemini_key', v);
   const st = document.getElementById('geminiKeyStatus');
   st.style.display='block'; st.style.color='var(--green-dark)';
-  st.textContent='✓ OpenAI key saved. AI recaps are now enabled.';
+  st.textContent='✓ API key saved. AI recaps are now enabled.';
   document.getElementById('geminiKeyInput').value='';
   setTimeout(()=>st.style.display='none', 3000);
   toast('API key saved','ok');
+}
+
+function saveGeminiModel(){
+  const v = document.getElementById('geminiModelInput').value.trim();
+  if(!v){ toast('Enter a model name first','err'); return; }
+  localStorage.setItem('cd_gemini_model', v);
+  const badge = document.getElementById('geminiModelBadge');
+  if(badge) badge.textContent = '✦ ' + v;
+  const st = document.getElementById('geminiModelStatus');
+  st.style.display='block'; st.style.color='var(--green-dark)';
+  st.textContent='✓ Model saved: ' + v;
+  setTimeout(()=>st.style.display='none', 3000);
+  toast('Model saved','ok');
+}
+
+async function listGeminiModels(){
+  const key = getAIKey();
+  const st = document.getElementById('geminiModelStatus');
+  if(!key){ st.style.display='block'; st.style.color='var(--coral)'; st.textContent='Save your API key first.'; return; }
+  st.style.display='block'; st.style.color='var(--text3)'; st.textContent='Fetching available models...';
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models?key=${key}`);
+    const data = await res.json();
+    if(!res.ok) throw new Error(data.error?.message||res.statusText);
+    const models = (data.models||[])
+      .filter(m=>m.supportedGenerationMethods?.includes('generateContent'))
+      .map(m=>m.name.replace('models/',''));
+    if(!models.length){ st.textContent='No generateContent models found.'; return; }
+    st.style.color='var(--text2)';
+    st.innerHTML = '<strong>Available models (click to use):</strong><br>' +
+      models.map(m=>`<span onclick="document.getElementById('geminiModelInput').value='${m}'" style="display:inline-block;margin:3px 4px 0 0;padding:2px 8px;background:var(--gray-light);border:1px solid var(--border2);border-radius:5px;cursor:pointer;font-size:11px">${m}</span>`).join('');
+  } catch(e){
+    st.style.color='var(--coral)'; st.textContent='Error: '+e.message;
+  }
 }
 
 let recapCurrentType='site', recapCurrentName='', recapGeneratedText='', recapGeneratedSubject='';
@@ -2535,7 +2581,7 @@ async function generateRecap(){
   const prompt = buildPrompt(recapCurrentType, recapCurrentName, recapActiveTab);
 
   try {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${key}`, {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${getGeminiModel()}:generateContent?key=${key}`, {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
