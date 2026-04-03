@@ -551,7 +551,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
         <span class="current" id="breadcrumb">Dashboard</span>
       </div>
       <div class="topbar-right">
-        <div class="live-badge"><div class="live-dot"></div>876 accounts · 03-23-26</div>
+        <div class="live-badge" id="liveBadge"><div class="live-dot"></div><span id="liveBadgeText">—</span></div>
         <select class="top-sel" id="repSelect" onchange="updateAll()"></select>
         <select class="top-sel" id="periodSelect" onchange="onPeriodChange()">
           <option>March 2026</option><option>April 2026</option><option>Q2 2026</option>
@@ -1959,6 +1959,18 @@ function toggleTarget(id,name,rep){
 function updateBadge(pop=false){
   const n=Object.keys(targets).length;const el=document.getElementById('tgtBadge');if(!el)return;el.textContent=n;
   if(pop){el.classList.remove('pop');void el.offsetWidth;el.classList.add('pop');}
+  // Update live badge with active DP's latest upload info
+  const lbl=document.getElementById('liveBadgeText');
+  if(lbl){
+    if(uploadHistory.length>0){
+      const latest=uploadHistory[uploadHistory.length-1];
+      const acctCount=D.accounts.length;
+      const dateStr=latest.week_label||(latest.week_start||'').replace(/-/g,'-').slice(5).replace('-','/');
+      lbl.textContent=`${acctCount} accounts · ${dateStr}`;
+    } else {
+      lbl.textContent='No data uploaded';
+    }
+  }
 }
 function exportTargets(){
   const period=document.getElementById('periodSelect').value;
