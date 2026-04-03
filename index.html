@@ -1035,7 +1035,7 @@ let targets={}, donutChart=null, baseChart_=null, cpoChart=null;
 let scriptUrl=localStorage.getItem('cd_script_url')||'';
 const STATUSES=['Not Invited','Invited','Signed Up','Ordering'];
 const COLORS={'Not Invited':'#D1D5DB','Invited':'#F59E0B','Signed Up':'#7C3AED','Ordering':'#00A876'};
-const MAIN_REPS=['Aaron Witchger','Charlie Butwinick','Jeff Pierce','Jonathan Padelford','Josh Carroll','Robert Ramirez','August Vanmeter'];
+let MAIN_REPS=['Aaron Witchger','Charlie Butwinick','Jeff Pierce','Jonathan Padelford','Josh Carroll','Robert Ramirez','August Vanmeter']; // rebuilt from data in computeD()
 const DATES=["2026-03-16","2026-03-17","2026-03-18","2026-03-19","2026-03-20","2026-03-21","2026-03-22"];
 
 // ── LOCK ──
@@ -1081,10 +1081,61 @@ async function loadUploadHistory(){
     .order('week_start',{ascending:true});
   if(error){ console.warn('loadUploadHistory error:',error); D.accounts=[]; return; }
   uploadHistory = data || [];
+  // ── One-time migration from localStorage ─────────────────────────────
+  if(uploadHistory.length === 0){
+    await migrateLocalStorageToSupabase();
+    // Re-fetch after migration
+    if(localStorage.getItem('cd_migrated_'+activeDPId)){
+      const {data:data2} = await sb.from('weekly_snapshots')
+        .select('id,week_start,week_label,uploaded_at,accounts,metrics')
+        .eq('dp_id',activeDPId).order('week_start',{ascending:true});
+      uploadHistory = data2 || [];
+    }
+  }
+  // ── Fallback to SEED_DATA if still empty ──────────────────────────────
   if(uploadHistory.length > 0){
     D.accounts = uploadHistory[uploadHistory.length-1].accounts;
   } else {
-    D.accounts = [];
+    D.accounts = SEED_DATA.accounts;
+  }
+}
+
+async function migrateLocalStorageToSupabase(){
+  // Find any old localStorage upload history keys
+  const keys = Object.keys(localStorage).filter(k=>k.startsWith('cd_upload_history'));
+  if(keys.length === 0) return;
+  let migrated = 0;
+  for(const key of keys){
+    try{
+      const entries = JSON.parse(localStorage.getItem(key)||'[]');
+      if(!Array.isArray(entries)||entries.length===0) continue;
+      // Deduplicate by date — old entries used timestamp ms
+      const seen = new Set();
+      for(const e of entries){
+        if(!e.accounts||!Array.isArray(e.accounts)||e.accounts.length===0) continue;
+        // Derive a week_start from timestamp
+        const ts = e.timestamp||Date.now();
+        const d = new Date(ts);
+        const day = d.getDay();
+        const diff = d.getDate()-day+(day===0?-6:1);
+        d.setDate(diff);
+        let week_start = d.toISOString().slice(0,10);
+        // Avoid duplicate week_starts
+        while(seen.has(week_start)){
+          const dd=new Date(week_start);dd.setDate(dd.getDate()-7);week_start=dd.toISOString().slice(0,10);
+        }
+        seen.add(week_start);
+        const metrics = computeMetrics(e.accounts);
+        const row = {dp_id:activeDPId,week_start,week_label:e.label||'Imported upload',
+          accounts:e.accounts,metrics,uploaded_at:new Date(ts).toISOString()};
+        await sb.from('weekly_snapshots').upsert(row,{onConflict:'dp_id,week_start'});
+        migrated++;
+      }
+    }catch(err){ console.warn('migration error for key',key,err); }
+  }
+  if(migrated>0){
+    localStorage.setItem('cd_migrated_'+activeDPId,'1');
+    toast(`Recovered ${migrated} upload${migrated>1?'s':''} from browser storage`,'ok');
   }
 }
 
@@ -1237,6 +1288,9 @@ async function initApp(){
 function getFA(){const r=document.getElementById('repSelect').value;return r==='All'?D.accounts:D.accounts.filter(a=>a.rep===r);}
 function rebuildRepSelect(){const s=document.getElementById('repSelect');s.innerHTML=['All',...MAIN_REPS].map(r=>`<option value="${r}">${r==='All'?'All Reps':r}</option>`).join('');}
 function computeD(){
+  // Rebuild MAIN_REPS from actual uploaded data — makes tool work for any DP
+  const repsFromData = [...new Set(D.accounts.filter(a=>a.eligible==='Yes').map(a=>a.rep).filter(Boolean))].sort();
+  if(repsFromData.length > 0) MAIN_REPS = repsFromData;
   // Build D.rep_summary from D.accounts
   const rs={};
   MAIN_REPS.forEach(rep=>{
@@ -1295,7 +1349,7 @@ function renderKPIs(){
 }
 
 function renderGoalKPI(currentPct){
-  const targetDate = localStorage.getItem(dpKey('cd_target_date'));
+  const targetDate = (document.getElementById('targetDateInput')?.value||'').trim() || null;
   if(!targetDate){
     return '<div class="kpi"><div class="kpi-label">80% Goal</div><div class="kpi-num" style="color:var(--text3);font-size:16px;padding-top:4px">—</div><div class="kpi-sub" style="margin-top:6px"><a onclick="showTabById(&quot;setup&quot;)" style="color:var(--green-dark);cursor:pointer;font-weight:600">Set target date in Setup</a></div></div>';
   }
