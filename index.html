@@ -221,29 +221,29 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
 .empty-state .hint{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-top:14px;}
 
 /* ── REPORT CARD ── */
-.rc-page{background:var(--white);border-radius:12px;box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;max-width:900px;}
-.rc-page-hdr{background:var(--nav);padding:24px 32px;display:flex;align-items:center;justify-content:space-between;}
-.rc-page-hdr-left{display:flex;align-items:center;gap:14px;}
-.rc-mark{width:44px;height:44px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;}
-.rc-mark svg{width:24px;height:24px;}
-.rc-page-title{font-size:20px;font-weight:700;color:#fff;}
-.rc-page-sub{font-size:13px;color:rgba(255,255,255,.55);margin-top:2px;}
-.rc-page-date{font-size:12px;color:rgba(255,255,255,.4);font-weight:500;}
-.rc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--border);}
-.rc-kpi-cell{padding:20px 24px;border-right:1px solid var(--border);}
+.rc-page{background:#ffffff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.13),0 1px 4px rgba(0,0,0,.08);overflow:hidden;max-width:760px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111827;}
+.rc-page-hdr{background:linear-gradient(135deg,#0a4f3a 0%,#00a876 100%);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;}
+.rc-page-hdr-left{display:flex;align-items:center;gap:16px;}
+.rc-mark{width:48px;height:48px;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.25);}
+.rc-mark svg{width:26px;height:26px;}
+.rc-page-title{font-size:18px;font-weight:700;color:#fff;letter-spacing:-.3px;}
+.rc-page-sub{font-size:12px;color:rgba(255,255,255,.65);margin-top:3px;font-weight:500;}
+.rc-page-date{font-size:11px;color:rgba(255,255,255,.5);font-weight:500;text-align:right;line-height:1.6;}
+.rc-kpi-row{display:grid;grid-template-columns:repeat(4,1fr);background:#f9fafb;}
+.rc-kpi-cell{padding:20px 22px;border-right:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb;background:#fff;}
 .rc-kpi-cell:last-child{border-right:none;}
-.rc-kpi-lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:8px;}
-.rc-kpi-val{font-size:30px;font-weight:700;line-height:1;margin-bottom:3px;}
-.rc-kpi-sub{font-size:12px;color:var(--text2);}
-.rc-section{padding:20px 24px;border-bottom:1px solid var(--border);}
+.rc-kpi-lbl{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#9ca3af;margin-bottom:8px;}
+.rc-kpi-val{font-size:28px;font-weight:800;line-height:1;margin-bottom:4px;letter-spacing:-.5px;}
+.rc-kpi-sub{font-size:11px;color:#6b7280;line-height:1.4;}
+.rc-section{padding:20px 28px;border-bottom:1px solid #f3f4f6;background:#fff;}
 .rc-section:last-child{border-bottom:none;}
-.rc-section-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-.rc-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+.rc-section-title{font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.rc-section-title::after{content:'';flex:1;height:1px;background:#f3f4f6;}
 .rc-rep-tbl{width:100%;border-collapse:collapse;font-size:13px;}
-.rc-rep-tbl th{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);padding:8px 12px;text-align:left;background:var(--gray-light);border-bottom:1px solid var(--border);}
-.rc-rep-tbl td{padding:11px 12px;border-bottom:1px solid var(--border);}
+.rc-rep-tbl th{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#9ca3af;padding:10px 12px;text-align:left;background:#f9fafb;border-bottom:2px solid #e5e7eb;}
+.rc-rep-tbl td{padding:12px 12px;border-bottom:1px solid #f3f4f6;color:#374151;}
 .rc-rep-tbl tr:last-child td{border-bottom:none;}
-.rc-rep-tbl tr:hover td{background:var(--gray-light);}
+.rc-rep-tbl tr:hover td{background:#f9fafb;}
 .priority-chip{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;white-space:nowrap;}
 .p-high{background:#FEE2E2;color:#991B1B;}
 .p-med{background:#FEF3C7;color:#92400E;}
@@ -251,16 +251,16 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
 .p-great{background:#DCFCE7;color:#166534;}
 .funnel-mini{display:flex;gap:2px;align-items:center;height:14px;}
 .funnel-mini-seg{height:100%;min-width:2px;border-radius:1px;}
-.rc-pipeline-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--border);}
+.rc-pipeline-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid #f3f4f6;}
 .rc-pipeline-row:last-child{border-bottom:none;}
-.rc-pipe-left{display:flex;align-items:center;gap:10px;}
+.rc-pipe-left{display:flex;align-items:center;gap:12px;}
 .rc-pipe-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
-.rc-pipe-lbl{font-size:14px;color:var(--text);}
-.rc-pipe-sub{font-size:12px;color:var(--text3);margin-top:2px;}
-.rc-pipe-count{font-size:22px;font-weight:700;}
-.rc-pipe-action{font-size:13px;font-weight:700;color:var(--text);text-align:right;}
-.rc-footer{background:var(--gray-light);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
-.rc-footer-lbl{font-size:12px;color:var(--text3);}
+.rc-pipe-lbl{font-size:13px;font-weight:600;color:#111827;}
+.rc-pipe-sub{font-size:11px;color:#9ca3af;margin-top:2px;line-height:1.4;}
+.rc-pipe-count{font-size:24px;font-weight:800;letter-spacing:-.5px;}
+.rc-pipe-action{font-size:11px;font-weight:600;color:#6b7280;text-align:right;margin-top:2px;}
+.rc-footer{background:#f9fafb;padding:16px 28px;display:flex;align-items:center;justify-content:space-between;border-top:2px solid #e5e7eb;}
+.rc-footer-lbl{font-size:11px;color:#9ca3af;font-weight:500;}
 .btn-print{background:var(--green);border:none;color:#fff;border-radius:8px;font-family:var(--font);font-size:13px;font-weight:600;padding:8px 16px;cursor:pointer;display:flex;align-items:center;gap:6px;}
 .btn-print:hover{background:var(--green-dark);}
 
@@ -424,7 +424,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
   .layout{display:block!important;}
   .view{display:block!important;page-break-after:always;}
   .view:last-child{page-break-after:avoid;}
-  .rc-page{box-shadow:none!important;border:none!important;max-width:100%!important;}
+  .rc-page{box-shadow:none!important;max-width:100%!important;border-radius:0!important;}
   .card,.kpi,.rep-card,.leaderboard,.tbl-wrap{box-shadow:none!important;border:1px solid #ccc!important;}
   .kpi-num{font-size:24px!important;}
   .card-title,.view-title{font-size:16px!important;font-weight:bold!important;}
@@ -663,6 +663,10 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
             Print / Save PDF
           </button>
+          <button class="btn-export" onclick="copyReportCardEmail()" style="background:#059669;color:#fff;border-color:#059669;display:flex;align-items:center;gap:6px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            Copy Email HTML
+          </button>
         </div>
         <div class="rc-page" id="reportCard"></div>
       </div>
@@ -703,11 +707,11 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
       <div id="view-setup" class="view">
         <div class="setup-wrap">
           <div class="setup-card">
-            <h2>AI-Powered Recaps <span class="gemini-badge" style="font-size:11px;vertical-align:middle;margin-left:6px">✦ GPT-4o</span></h2>
-            <p>Add your OpenAI API key to enable AI-generated adoption recaps and email drafts. Get a key at <strong>platform.openai.com/api-keys</strong>.</p>
+            <h2>AI-Powered Recaps <span class="gemini-badge" style="font-size:11px;vertical-align:middle;margin-left:6px">✦ Gemini 2.0 Flash</span></h2>
+            <p>Add your Gemini API key to enable AI-generated adoption recaps and email drafts. Get a free key at <strong>aistudio.google.com/app/apikey</strong>.</p>
             <label style="font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);display:block;margin-bottom:6px">API Key</label>
             <div class="field-row">
-              <input class="field-input" type="password" id="geminiKeyInput" placeholder="sk-..." autocomplete="off">
+              <input class="field-input" type="password" id="geminiKeyInput" placeholder="AIzaSy..." autocomplete="off">
               <button class="btn-connect" onclick="saveGeminiKey()">Save</button>
             </div>
             <div id="geminiKeyStatus" style="font-size:12px;margin-top:8px;display:none"></div>
@@ -821,7 +825,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
         <div class="modal-title" id="recapModalTitle">Adoption Recap</div>
         <div style="font-size:12px;color:var(--text3);margin-top:2px;display:flex;align-items:center;gap:8px">
           GET Cut+Dry · <span id="recapModalSub">Generated by GPT-4o</span>
-          <span class="gemini-badge">✦ GPT-4o</span>
+          <span class="gemini-badge">✦ Gemini 2.0 Flash</span>
         </div>
       </div>
       <button class="modal-close" onclick="closeRecapModal()">×</button>
@@ -1423,6 +1427,43 @@ function renderRepCards(){
 }
 
 // ── REPORT CARD ──
+// ── WoW / MoM Delta ──────────────────────────────────────────────────────
+function computeDelta(){
+  if(uploadHistory.length < 2) return null;
+  const prev = uploadHistory[uploadHistory.length-2];
+  const curr = uploadHistory[uploadHistory.length-1];
+  const prevAccts = prev.accounts||[];
+  const currAccts = curr.accounts||[];
+  const moved = [];
+  currAccts.forEach(c=>{
+    const p = prevAccts.find(a=>a.id===c.id);
+    if(p && p.status !== c.status) moved.push({id:c.id,name:c.name,rep:c.rep,from:p.status,to:c.status});
+  });
+  const newAccts = currAccts.filter(c=>!prevAccts.find(p=>p.id===c.id));
+  const prevEl = prevAccts.filter(a=>a.eligible==='Yes');
+  const currEl = currAccts.filter(a=>a.eligible==='Yes');
+  const prevOrdPct = prevEl.length?Math.round(prevEl.filter(a=>a.status==='Ordering').length/prevEl.length*1000)/10:0;
+  const currOrdPct = currEl.length?Math.round(currEl.filter(a=>a.status==='Ordering').length/currEl.length*1000)/10:0;
+  // Per-rep deltas
+  const repDelta = {};
+  const allReps = [...new Set([...prevAccts,...currAccts].map(a=>a.rep).filter(Boolean))];
+  allReps.forEach(rep=>{
+    const pEl=prevAccts.filter(a=>a.rep===rep&&a.eligible==='Yes');
+    const cEl=currAccts.filter(a=>a.rep===rep&&a.eligible==='Yes');
+    const pPct=pEl.length?Math.round(pEl.filter(a=>a.status==='Ordering').length/pEl.length*1000)/10:0;
+    const cPct=cEl.length?Math.round(cEl.filter(a=>a.status==='Ordering').length/cEl.length*1000)/10:0;
+    repDelta[rep]={prev_pct:pPct,curr_pct:cPct,delta:Math.round((cPct-pPct)*10)/10,
+      new_ordering:moved.filter(m=>m.rep===rep&&m.to==='Ordering').length};
+  });
+  return {
+    prev_label:prev.week_label, curr_label:curr.week_label,
+    moved, new_accounts:newAccts,
+    prev_ordering_pct:prevOrdPct, curr_ordering_pct:currOrdPct,
+    delta_pct:Math.round((currOrdPct-prevOrdPct)*10)/10,
+    rep_delta:repDelta
+  };
+}
+
 function renderReportCard(){
   const fa=getFA(),tot=fa.length;
   const ordering=fa.filter(a=>a.status==='Ordering').length;
@@ -1452,9 +1493,9 @@ function renderReportCard(){
       <td style="font-weight:600">${rep}</td>
       <td>${s.total}</td>
       <td><div class="funnel-mini">${segs}</div></td>
-      <td style="font-weight:700;color:var(--green-dark)">${s.ordering_pct}%</td>
+      <td style="font-weight:700;color:#059669">${s.ordering_pct}%</td>
       <td>${cpo.pct||'—'}%</td>
-      <td style="color:${ni>50?'#991B1B':'var(--text2)'}">${ni}</td>
+      <td style="color:${ni>50?'#991b1b':'#6b7280'}">${ni}</td>
       <td>${s.eligible_ni}</td>
       <td>${priority(s)}</td>
     </tr>`;
@@ -1463,19 +1504,65 @@ function renderReportCard(){
   const allOrders=Object.values(CPO_ORDERS).flat();
   const cpoPct=allOrders.length?Math.round(allOrders.filter(o=>o.is_cpo).length/allOrders.length*100):0;
 
+  const delta = computeDelta();
+  const dpName = dpList.find(d=>d.id===activeDPId)?.name || 'Distribution Partner';
+
+  // Delta badge helper
+  function deltaBadge(val){
+    if(val===null||val===undefined) return '';
+    const sign = val>0?'+':'';
+    const color = val>0?'var(--green-dark)':val<0?'var(--coral)':'var(--text3)';
+    return `<span style="font-size:12px;font-weight:700;color:${color};margin-left:6px">${sign}${val}%</span>`;
+  }
+
+  // WoW delta section HTML
+  let deltaSection = '';
+  if(delta){
+    const newOrdering = delta.moved.filter(m=>m.to==='Ordering');
+    const advanced = delta.moved.filter(m=>m.to!=='Not Invited'&&(m.from==='Not Invited'||m.from==='Invited'));
+    const movers = MAIN_REPS.filter(r=>delta.rep_delta[r]&&delta.rep_delta[r].delta!==0)
+      .sort((a,b)=>(delta.rep_delta[b]?.delta||0)-(delta.rep_delta[a]?.delta||0));
+    deltaSection = `
+    <div class="rc-section" style="border:1px solid ${delta.delta_pct>=0?'var(--green)':'var(--coral)'};border-radius:10px;padding:16px;margin-bottom:16px;background:${delta.delta_pct>=0?'var(--green-light)':'rgba(255,99,71,.07)'}">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div class="rc-section-title" style="margin:0">Week-over-Week Change</div>
+        <div style="font-size:12px;color:var(--text3)">${delta.prev_label} → ${delta.curr_label}</div>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:14px">
+        <div><div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em">Ordering Rate</div>
+          <div style="font-size:22px;font-weight:700;color:var(--text)">${delta.prev_ordering_pct}% → ${delta.curr_ordering_pct}%${deltaBadge(delta.delta_pct)}</div></div>
+        <div><div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em">New Ordering</div>
+          <div style="font-size:22px;font-weight:700;color:var(--green-dark)">+${newOrdering.length} accounts</div></div>
+        <div><div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em">Advanced in Funnel</div>
+          <div style="font-size:22px;font-weight:700;color:var(--purple)">${advanced.length} accounts</div></div>
+        ${delta.new_accounts.length?`<div><div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em">New Accounts</div>
+          <div style="font-size:22px;font-weight:700;color:var(--blue)">+${delta.new_accounts.length}</div></div>`:''}
+      </div>
+      ${movers.length?`<div style="margin-bottom:10px">
+        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Rep Movement</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">${movers.map(r=>{const d=delta.rep_delta[r];return`<div style="background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px"><strong>${r.split(' ')[0]}</strong> ${d.prev_pct}%→${d.curr_pct}%${deltaBadge(d.delta)}</div>`;}).join('')}</div>
+      </div>`:''}
+      ${newOrdering.length?`<div>
+        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Newly Ordering This Week</div>
+        <div style="font-size:12px;color:var(--text2)">${newOrdering.slice(0,8).map(m=>`<span style="display:inline-block;background:var(--green-light);border:1px solid var(--green);border-radius:6px;padding:2px 8px;margin:2px;font-size:11px">${esc(m.name)} <span style="color:var(--text3)">(${m.rep.split(' ')[0]})</span></span>`).join('')}${newOrdering.length>8?` <span style="font-size:11px;color:var(--text3)">+${newOrdering.length-8} more</span>`:''}</div>
+      </div>`:''}
+    </div>`;
+  }
+
   document.getElementById('reportCard').innerHTML=`
     <div class="rc-page-hdr">
       <div class="rc-page-hdr-left">
         <div class="rc-mark"><svg viewBox="0 0 22 22" fill="none"><path d="M4 11h14M11 4l7 7-7 7" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div><div class="rc-page-title">Fortune Fish MN · Adoption Report Card</div><div class="rc-page-sub">Cut+Dry Platform — ${repSel==='All'?'All Reps':repSel}</div></div>
+        <div><div class="rc-page-title">${esc(dpName)} · Adoption Report Card</div><div class="rc-page-sub">Cut+Dry Platform — ${repSel==='All'?'All Reps':repSel}</div></div>
       </div>
       <div class="rc-page-date">${period} · Generated ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</div>
     </div>
+    ${deltaSection}
     <div class="rc-kpi-row">
-      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ordering Rate</div><div class="rc-kpi-val" style="color:var(--green-dark)">${ordPct}%</div><div class="rc-kpi-sub">${ordering} of ${tot} accounts active</div></div>
-      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ready to Invite</div><div class="rc-kpi-val" style="color:var(--yellow)">${eligNI}</div><div class="rc-kpi-sub">Eligible · never contacted</div></div>
-      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Pipeline Stuck</div><div class="rc-kpi-val" style="color:var(--purple)">${invited+su}</div><div class="rc-kpi-sub">${invited} invited · ${su} signed up not ordering</div></div>
-      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">CPO% (Mar 16–22)</div><div class="rc-kpi-val" style="color:var(--blue)">${cpoPct}%</div><div class="rc-kpi-sub">Orders placed by customers</div></div>
+      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ordering Rate</div><div class="rc-kpi-val" style="color:#059669">${ordPct}%${delta?deltaBadge(delta.delta_pct):''}</div><div class="rc-kpi-sub">${ordering} of ${tot} accounts active</div></div>
+      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ready to Invite</div><div class="rc-kpi-val" style="color:#d97706">${eligNI}</div><div class="rc-kpi-sub">Eligible · never contacted</div></div>
+      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Pipeline Stuck</div><div class="rc-kpi-val" style="color:#7c3aed">${invited+su}</div><div class="rc-kpi-sub">${invited} invited · ${su} signed up not ordering</div></div>
+      <div class="rc-kpi-cell"><div class="rc-kpi-lbl">CPO% (Current Period)</div><div class="rc-kpi-val" style="color:#2563eb">${cpoPct}%</div><div class="rc-kpi-sub">Orders placed by customers</div></div>
     </div>
     <div class="rc-section">
       <div class="rc-section-title">Rep Performance Scorecard</div>
@@ -1487,24 +1574,24 @@ function renderReportCard(){
     <div class="rc-section">
       <div class="rc-section-title">Actionable Pipeline</div>
       <div class="rc-pipeline-row">
-        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--yellow)"></div><div><div class="rc-pipe-lbl">Ready to Invite</div><div class="rc-pipe-sub">Eligible accounts with contact info — send invite now</div></div></div>
-        <div><div class="rc-pipe-count" style="color:var(--yellow)">${fa.filter(a=>a.status==='Not Invited'&&a.eligible==='Yes'&&a.u1n).length}</div><div class="rc-pipe-action">Send Invite →</div></div>
+        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:#f59e0b"></div><div><div class="rc-pipe-lbl">Ready to Invite</div><div class="rc-pipe-sub">Eligible accounts with contact info — send invite now</div></div></div>
+        <div><div class="rc-pipe-count" style="color:#d97706">${fa.filter(a=>a.status==='Not Invited'&&a.eligible==='Yes'&&a.u1n).length}</div><div class="rc-pipe-action">Send Invite →</div></div>
       </div>
       <div class="rc-pipeline-row">
-        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--coral)"></div><div><div class="rc-pipe-lbl">Missing Contact Info</div><div class="rc-pipe-sub">Eligible but no user loaded in Cut+Dry</div></div></div>
-        <div><div class="rc-pipe-count" style="color:var(--coral)">${fa.filter(a=>a.status==='Not Invited'&&a.eligible==='Yes'&&!a.u1n).length}</div><div class="rc-pipe-action">Add Details →</div></div>
+        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:#ef4444"></div><div><div class="rc-pipe-lbl">Missing Contact Info</div><div class="rc-pipe-sub">Eligible but no user loaded in Cut+Dry</div></div></div>
+        <div><div class="rc-pipe-count" style="color:#ef4444">${fa.filter(a=>a.status==='Not Invited'&&a.eligible==='Yes'&&!a.u1n).length}</div><div class="rc-pipe-action">Add Details →</div></div>
       </div>
       <div class="rc-pipeline-row">
-        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--purple)"></div><div><div class="rc-pipe-lbl">Invited · Not Signed Up</div><div class="rc-pipe-sub">Received invite, haven't created account — send reminder</div></div></div>
-        <div><div class="rc-pipe-count" style="color:var(--purple)">${invited}</div><div class="rc-pipe-action">Send Reminder →</div></div>
+        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:#7c3aed"></div><div><div class="rc-pipe-lbl">Invited · Not Signed Up</div><div class="rc-pipe-sub">Received invite, haven't created account — send reminder</div></div></div>
+        <div><div class="rc-pipe-count" style="color:#7c3aed">${invited}</div><div class="rc-pipe-action">Send Reminder →</div></div>
       </div>
       <div class="rc-pipeline-row">
-        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:var(--blue)"></div><div><div class="rc-pipe-lbl">Signed Up · Not Active</div><div class="rc-pipe-sub">Have an account but haven't placed an order — nudge them</div></div></div>
-        <div><div class="rc-pipe-count" style="color:var(--blue)">${su}</div><div class="rc-pipe-action">Nudge Customer →</div></div>
+        <div class="rc-pipe-left"><div class="rc-pipe-dot" style="background:#2563eb"></div><div><div class="rc-pipe-lbl">Signed Up · Not Active</div><div class="rc-pipe-sub">Have an account but haven't placed an order — nudge them</div></div></div>
+        <div><div class="rc-pipe-count" style="color:#2563eb">${su}</div><div class="rc-pipe-action">Nudge Customer →</div></div>
       </div>
     </div>
     <div class="rc-footer">
-      <div class="rc-footer-lbl">Cut+Dry Adoption Tracker · Fortune Fish MN · Data as of 03-23-2026</div>
+      <div class="rc-footer-lbl">Cut+Dry Adoption Tracker · ${esc(dpName)} · Data as of ${new Date().toLocaleDateString("en-US",{month:"2-digit",day:"2-digit",year:"numeric"})}</div>
       <div class="rc-footer-lbl" style="color:var(--green-dark);font-weight:600">Powered by Cut+Dry</div>
     </div>`;
 }
@@ -1718,7 +1805,7 @@ function renderDSMDash(){
       <td style="font-weight:600">${rep}</td>
       <td>${s.total}</td>
       <td><div class="mini-funnel">${segs}</div></td>
-      <td style="font-weight:700;color:var(--green-dark)">${s.ordering_pct}%</td>
+      <td style="font-weight:700;color:#059669">${s.ordering_pct}%</td>
       <td>${s.counts['Not Invited']||0}</td>
       <td style="color:var(--blue);font-weight:600">${cpo.pct||'—'}%</td>
     </tr>`;
@@ -1794,7 +1881,7 @@ function renderDSMReportCard(name, accts, reps, h){
       <td style="font-weight:600">${rep}</td>
       <td>${s.total}</td>
       <td><div class="funnel-mini">${segs}</div></td>
-      <td style="font-weight:700;color:var(--green-dark)">${s.ordering_pct}%</td>
+      <td style="font-weight:700;color:#059669">${s.ordering_pct}%</td>
       <td>${cpo.pct||'—'}%</td>
       <td style="color:${(s.counts['Not Invited']||0)>50?'#991B1B':'var(--text2)'}">${s.counts['Not Invited']||0}</td>
       <td>${s.eligible_ni}</td>
@@ -1819,10 +1906,10 @@ function renderDSMReportCard(name, accts, reps, h){
         <div style="font-size:12px;color:rgba(255,255,255,.4)">${period} · ${new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</div>
       </div>
       <div class="rc-kpi-row">
-        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ordering Rate</div><div class="rc-kpi-val" style="color:var(--green-dark)">${ordPct}%</div><div class="rc-kpi-sub">${ordering} of ${tot} accounts</div></div>
-        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ready to Invite</div><div class="rc-kpi-val" style="color:var(--yellow)">${eligNI}</div><div class="rc-kpi-sub">Eligible · never contacted</div></div>
-        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Pipeline Stuck</div><div class="rc-kpi-val" style="color:var(--purple)">${invited+su}</div><div class="rc-kpi-sub">${invited} invited · ${su} signed up</div></div>
-        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">CPO% Rollup</div><div class="rc-kpi-val" style="color:var(--blue)">${cpoPct}%</div><div class="rc-kpi-sub">${cpoTot} orders week of Mar 16</div></div>
+        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ordering Rate</div><div class="rc-kpi-val" style="color:#059669">${ordPct}%</div><div class="rc-kpi-sub">${ordering} of ${tot} accounts</div></div>
+        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Ready to Invite</div><div class="rc-kpi-val" style="color:#d97706">${eligNI}</div><div class="rc-kpi-sub">Eligible · never contacted</div></div>
+        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">Pipeline Stuck</div><div class="rc-kpi-val" style="color:#7c3aed">${invited+su}</div><div class="rc-kpi-sub">${invited} invited · ${su} signed up</div></div>
+        <div class="rc-kpi-cell"><div class="rc-kpi-lbl">CPO% Rollup</div><div class="rc-kpi-val" style="color:#2563eb">${cpoPct}%</div><div class="rc-kpi-sub">${cpoTot} orders week of Mar 16</div></div>
       </div>
       <div class="rc-section">
         <div class="rc-section-title">Rep Scorecard — ${dsmLabel}</div>
@@ -1832,7 +1919,7 @@ function renderDSMReportCard(name, accts, reps, h){
         </table>
       </div>
       <div class="rc-footer">
-        <div class="rc-footer-lbl">Cut+Dry Adoption Tracker · Fortune Fish MN · Data as of 03-23-2026</div>
+        <div class="rc-footer-lbl">Cut+Dry Adoption Tracker · ${esc(dpName)} · Data as of ${new Date().toLocaleDateString("en-US",{month:"2-digit",day:"2-digit",year:"numeric"})}</div>
         <div class="rc-footer-lbl" style="color:var(--green-dark);font-weight:600">Powered by Cut+Dry</div>
       </div>
     </div>`;
@@ -2050,7 +2137,7 @@ function closeRecapModal(){ document.getElementById('recapOverlay').classList.re
 function showNoKeyNotice(){
   document.getElementById('recapBody').innerHTML = `<div class="no-key-notice">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1a73e8" stroke-width="2" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <div>No OpenAI API key found. <a onclick="closeRecapModal();showTabById('setup')">Add your key in Setup →</a><br>Get a key at <strong>platform.openai.com/api-keys</strong>.</div>
+    <div>No Gemini API key found. <a onclick="closeRecapModal();showTabById('setup')">Add your key in Setup →</a><br>Get a free key at <strong>aistudio.google.com/app/apikey</strong>.</div>
   </div>`;
 }
 
@@ -2058,6 +2145,7 @@ function buildPrompt(type, name, tab){
   const h = loadHierarchy();
   const period = document.getElementById('periodSelect').value;
   const today = new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'});
+  const dpName = dpList.find(d=>d.id===activeDPId)?.name || 'Distribution Partner';
 
   // Gather data depending on type
   let dataContext = '';
@@ -2079,10 +2167,17 @@ function buildPrompt(type, name, tab){
       const c=D.cpo[r]||{};
       return `  - ${r}: ${s.ordering_pct}% ordering (${s.counts['Ordering']}/${s.total} accounts), ${s.counts['Not Invited']} not invited, CPO ${c.pct||'N/A'}%`;
     }).join('\n');
-    dataContext = `Site: Fortune Fish MN | Period: ${period} | Date: ${today}
+    const delta = computeDelta();
+    const deltaLines = delta ? `
+Week-over-Week Change (${delta.prev_label} → ${delta.curr_label}):
+  Ordering rate: ${delta.prev_ordering_pct}% → ${delta.curr_ordering_pct}% (${delta.delta_pct>0?'+':''}${delta.delta_pct}%)
+  New accounts ordering this week: ${delta.moved.filter(m=>m.to==='Ordering').length}
+  Accounts that advanced in funnel: ${delta.moved.filter(m=>m.to!=='Not Invited').length}
+  Rep movements: ${Object.entries(delta.rep_delta).filter(([,v])=>v.delta!==0).map(([r,v])=>`${r.split(' ')[0]} ${v.prev_pct}%→${v.curr_pct}% (${v.delta>0?'+':''}${v.delta}%)`).join(', ')||'none'}` : '';
+    dataContext = `Site: ${dpName} | Period: ${period} | Date: ${today}
 Overall: ${ordering} of ${tot} accounts ordering (${ordPct}%), ${eligNI} eligible accounts never invited, ${invited} invited not signed up, ${su} signed up not yet ordering, CPO% ${cpoPct}%
 Rep breakdown:
-${repLines}`;
+${repLines}${deltaLines}`;
     tone = 'executive-level, strategic, action-oriented';
     recipient = 'site leadership / VP of Sales';
   }
@@ -2134,7 +2229,7 @@ Order volume trend (Mon-Sun): ${spark.join(', ')} — ${sparkTrend}`;
 
   return `You are Martin Thomas, a Growth Manager at Cut+Dry (a food distribution SaaS platform). You help food distributors drive digital adoption. You are analytical, direct, and good at motivating sales teams with data.
 
-Here is the adoption data for Fortune Fish MN:
+Here is the adoption data for ${dpName}:
 ${dataContext}
 
 ${tabInstructions[tab]||tabInstructions.email}
@@ -2154,19 +2249,17 @@ async function generateRecap(){
   const prompt = buildPrompt(recapCurrentType, recapCurrentName, recapActiveTab);
 
   try {
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${key}`, {
       method: 'POST',
-      headers: {'Content-Type':'application/json', 'Authorization': `Bearer ${key}`},
+      headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages: [{role:'user', content: prompt}],
-        temperature: 0.7,
-        max_tokens: 600
+        contents: [{parts: [{text: prompt}]}],
+        generationConfig: {temperature: 0.7, maxOutputTokens: 1500}
       })
     });
     const data = await res.json();
     if(data.error){ throw new Error(data.error.message||'API error'); }
-    const text = data.choices?.[0]?.message?.content||'No response generated.';
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text||'No response generated.';
     recapGeneratedText = text;
     renderRecapForTab(recapActiveTab);
   } catch(err){
@@ -2329,6 +2422,38 @@ function exportPDF(){
 }
 
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCPOModal();closeRecapModal();}});
+
+function copyReportCardEmail(){
+  const el = document.getElementById('reportCard');
+  if(!el||!el.innerHTML.trim()){ toast('Generate report card first','err'); return; }
+  // Build self-contained email HTML with inline styles
+  const dpName = dpList.find(d=>d.id===activeDPId)?.name || 'Distribution Partner';
+  const html = `<!DOCTYPE html><html><head><meta charset="utf-8">
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f3f4f6;margin:0;padding:24px;}
+.wrap{max-width:680px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.1);}
+.hdr{background:linear-gradient(135deg,#0a4f3a,#00a876);padding:24px 28px;color:#fff;}
+.hdr h1{margin:0;font-size:18px;font-weight:700;}
+.hdr p{margin:4px 0 0;font-size:12px;opacity:.65;}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid #e5e7eb;}
+.kpi{padding:16px 18px;border-right:1px solid #e5e7eb;}
+.kpi:last-child{border-right:none;}
+.kpi-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9ca3af;margin-bottom:6px;}
+.kpi-val{font-size:24px;font-weight:800;line-height:1;margin-bottom:3px;}
+.kpi-sub{font-size:11px;color:#6b7280;}
+.section{padding:18px 24px;border-bottom:1px solid #f3f4f6;}
+.section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#9ca3af;margin-bottom:12px;}
+table{width:100%;border-collapse:collapse;font-size:12px;}
+th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#9ca3af;padding:8px 10px;text-align:left;background:#f9fafb;border-bottom:2px solid #e5e7eb;}
+td{padding:10px 10px;border-bottom:1px solid #f3f4f6;color:#374151;}
+tr:last-child td{border-bottom:none;}
+.chip{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;}
+.footer{background:#f9fafb;padding:14px 24px;display:flex;justify-content:space-between;font-size:11px;color:#9ca3af;}
+</style></head><body><div class="wrap">${el.innerHTML}</div></body></html>`;
+  navigator.clipboard.writeText(html).then(()=>toast('Email HTML copied to clipboard!','ok')).catch(()=>{
+    const ta=document.createElement('textarea');ta.value=html;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);toast('Email HTML copied!','ok');
+  });
+}
 </script>
 </body>
 </html>
