@@ -169,6 +169,11 @@ select.top-sel{background:var(--bg);border:1px solid var(--border);color:var(--t
 .rc-sub{font-size:12px;color:var(--text3);}
 .rc-pct{font-size:26px;font-weight:700;color:var(--green-dark);line-height:1;text-align:right;}
 .rc-pct-lbl{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);text-align:right;margin-top:2px;}
+.rc-metrics{display:flex;gap:16px;align-items:flex-start;}
+.rc-metric{display:flex;flex-direction:column;align-items:flex-end;}
+.rc-metric-num{font-size:26px;font-weight:700;line-height:1;text-align:right;}
+.rc-metric-lbl{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);text-align:right;margin-top:2px;}
+.rc-metric-divider{width:1px;background:var(--border);align-self:stretch;margin:2px 0;}
 .rep-card-body{padding:14px 18px;}
 .rc-status-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
 .rc-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
@@ -1601,7 +1606,7 @@ function renderLeaderboard(){
       <div><div class="lb-name">${rep}</div><div class="lb-name-sub">${s.counts['Not Invited']} not invited · ${s.eligible_ni} eligible untouched</div></div>
       <div class="lb-funnel">${segs}</div>
       <div class="lb-pct" style="color:var(--green-dark)">${s.ordering_pct}%</div>
-      <div class="lb-cpo" onclick="event.stopPropagation();openCPOModal('${rep}')">${cpo.pct||'—'}%</div>
+      <div class="lb-cpo" onclick="event.stopPropagation();openCPOModal('${rep}')" style="font-size:15px;font-weight:700;color:var(--blue)">${cpo.pct!=null&&cpo.pct!==undefined?cpo.pct+'%':'—'}</div>
       <div class="lb-meta">${tot} accounts</div>
     </div>`;
   }).join('');
@@ -1621,10 +1626,15 @@ function renderRepCards(){
     const rows=STATUSES.map(st=>{const cnt=s.counts[st]||0;const pct=s.total?Math.round(cnt/s.total*100):0;return`<div class="rc-status-row"><div class="rc-dot" style="background:${COLORS[st]}"></div><div class="rc-s-lbl">${st}</div><div class="rc-bar-outer"><div class="rc-bar-inner" style="width:${pct}%;background:${COLORS[st]}"></div></div><div class="rc-cnt">${cnt}</div><div class="rc-pct2">${pct}%</div></div>`;}).join('');
     const warn=s.eligible_ni>10?`<div class="rc-warn">⚠ ${s.eligible_ni} eligible accounts never invited</div>`:'';
     return`<div class="rep-card">
-      <div class="rep-card-hdr"><div><div class="rc-name">${rep}</div><div class="rc-sub">${s.total} accounts · ${s.engaged_pct}% engaged</div>${warn}</div><div><div class="rc-pct">${s.ordering_pct}%</div><div class="rc-pct-lbl">ordering</div></div></div>
+      <div class="rep-card-hdr"><div><div class="rc-name">${rep}</div><div class="rc-sub">${s.total} accounts · ${s.engaged_pct}% engaged</div>${warn}</div>
+        <div class="rc-metrics">
+          <div class="rc-metric"><div class="rc-metric-num" style="color:var(--green-dark)">${s.ordering_pct}%</div><div class="rc-metric-lbl">Ordering</div></div>
+          <div class="rc-metric-divider"></div>
+          <div class="rc-metric" style="cursor:pointer" onclick="openCPOModal('${rep}')"><div class="rc-metric-num" style="color:var(--blue)">${cpo.pct!=null?cpo.pct+'%':'—'}</div><div class="rc-metric-lbl">CPO%${cpo.cs_facilitated>0?` <span style="font-size:9px;background:#ede9fe;color:#6d28d9;border-radius:8px;padding:1px 5px;text-transform:none;letter-spacing:0">${cpo.cs_facilitated} CS</span>`:''}</div></div>
+        </div>
+      </div>
       <div class="rep-card-body">${rows}</div>
       <div class="rep-card-footer"><div class="rc-spark">${sparkBars}</div><div style="display:flex;gap:8px;align-items:center">
-          <div class="rc-cpo" onclick="openCPOModal('${rep}')">CPO ${cpo.pct||'—'}%${cpo.cs_facilitated>0?` <span style="font-size:10px;background:#ede9fe;color:#6d28d9;border-radius:10px;padding:1px 6px">${cpo.cs_facilitated} CS</span>`:''} →</div>
           <button class="btn-gen-recap" style="height:28px;padding:0 10px;font-size:11px" onclick="openRecapModal('rep','${rep}')">✦ Recap</button>
         </div></div>
     </div>`;
