@@ -806,7 +806,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
               <label class="btn-connect" style="cursor:pointer" for="csvUploadInput">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                 Upload CSV
-                <input type="file" id="csvUploadInput" accept=".csv" style="display:none" onchange="handleCSVUpload(event)">
+                <input type="file" id="csvUploadInput" accept=".csv,.xlsx,.xls" style="display:none" onchange="handleCSVUpload(event)">
               </label>
             </div>
             <div id="uploadHistoryList"></div>
@@ -832,7 +832,7 @@ select.f-sel{background:var(--white);border:1px solid var(--border2);color:var(-
               <button class="btn-connect" onclick="showAddDSMForm()">+ Add DSM</button>
               <label class="btn-connect" style="cursor:pointer;background:var(--white);border:1.5px solid var(--border2);color:var(--text2);" for="hierCSV">
                 Upload CSV
-                <input type="file" id="hierCSV" accept=".csv" style="display:none" onchange="parseHierarchyCSV(event)">
+                <input type="file" id="hierCSV" accept=".csv,.xlsx,.xls" style="display:none" onchange="parseHierarchyCSV(event)">
               </label>
               <button class="btn-cancel-dsm" onclick="clearHierarchy()" style="margin-left:auto">Clear All</button>
             </div>
@@ -1075,6 +1075,13 @@ async function loadDPSettings(){
   if(tdi) tdi.value = data?.target_date || '';
   const gpi = document.getElementById('goalPctInput');
   if(gpi) gpi.value = data?.goal_pct ?? 80;
+  // Hydrate hierarchy cache from the row we already fetched
+  if(data?.hierarchy && Object.keys(data.hierarchy.dsms||{}).length > 0){
+    localStorage.setItem('cd_hierarchy', JSON.stringify(data.hierarchy));
+  } else {
+    localStorage.removeItem('cd_hierarchy');
+  }
+  rebuildDSMSelector(); renderHierarchySetup(); renderDSMDash();
   // Load hidden reps
   try {
     const {data:hr} = await sb.from('dp_settings').select('value').eq('dp_id',activeDPId).eq('key','hidden_reps').maybeSingle();
@@ -2590,43 +2597,76 @@ function clearHierarchy(){
 function handleCSVUpload(e){
   const file = e.target.files[0];
   if(!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    parseCSVUpload(ev.target.result, file.name);
-  };
-  reader.readAsText(file);
+  const isExcel = /\.(xlsx|xls)$/i.test(file.name);
+  if(isExcel){
+    const reader = new FileReader();
+    reader.onload = ev => {
+      try{
+        const wb = XLSX.read(ev.target.result, {type:'array'});
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const csv = XLSX.utils.sheet_to_csv(ws);
+        parseCSVUpload(csv, file.name);
+      } catch(err){ toast('Could not read Excel file: '+err.message,'err'); }
+    };
+    reader.readAsArrayBuffer(file);
+  } else {
+    const reader = new FileReader();
+    reader.onload = ev => { parseCSVUpload(ev.target.result, file.name); };
+    reader.readAsText(file);
+  }
   e.target.value='';
+}
+
+function parseHierarchyRows(rows){
+  // rows: array of arrays (header + data)
+  if(rows.length<2){toast('File needs a header row and at least one data row','err');return;}
+  const hdrs=rows[0].map(h=>String(h||'').trim().toLowerCase());
+  const repIdx=hdrs.findIndex(h=>h.includes('rep'));
+  const dsmIdx=hdrs.findIndex(h=>h.includes('dsm')||h.includes('manager'));
+  const terrIdx=hdrs.findIndex(h=>h.includes('terr')||h.includes('region')||h.includes('district'));
+  if(repIdx<0||dsmIdx<0){toast('File needs "Rep Name" and "DSM Name" columns','err');return;}
+  const h=loadHierarchy();
+  let count=0;
+  rows.slice(1).forEach(cols=>{
+    const rep=String(cols[repIdx]||'').trim().replace(/"/g,'');
+    const dsm=String(cols[dsmIdx]||'').trim().replace(/"/g,'');
+    const terr=terrIdx>=0?String(cols[terrIdx]||'').trim().replace(/"/g,''):'';
+    if(!rep||!dsm)return;
+    if(!h.dsms[dsm])h.dsms[dsm]={territory:terr||null,reps:[]};
+    if(terr)h.dsms[dsm].territory=terr;
+    if(!h.dsms[dsm].reps.includes(rep))h.dsms[dsm].reps.push(rep);
+    count++;
+  });
+  saveHierarchy(h);
+  renderHierarchySetup();
+  rebuildDSMSelector();
+  renderDSMDash();
+  toast(`Imported ${count} rep assignments`,'ok');
 }
 
 function parseHierarchyCSV(e){
   const file=e.target.files[0];if(!file)return;
-  const reader=new FileReader();
-  reader.onload=ev=>{
-    const lines=ev.target.result.trim().split('\n').filter(l=>l.trim());
-    if(lines.length<2){toast('CSV needs a header row and at least one data row','err');return;}
-    const hdrs=lines[0].split(',').map(h=>h.trim().toLowerCase());
-    const repIdx=hdrs.findIndex(h=>h.includes('rep'));
-    const dsmIdx=hdrs.findIndex(h=>h.includes('dsm')||h.includes('manager'));
-    const terrIdx=hdrs.findIndex(h=>h.includes('terr')||h.includes('region')||h.includes('district'));
-    if(repIdx<0||dsmIdx<0){toast('CSV needs "Rep Name" and "DSM Name" columns','err');return;}
-    const h=loadHierarchy();
-    let count=0;
-    lines.slice(1).forEach(line=>{
-      const cols=line.split(',').map(c=>c.trim().replace(/"/g,''));
-      const rep=cols[repIdx],dsm=cols[dsmIdx],terr=terrIdx>=0?cols[terrIdx]:'';
-      if(!rep||!dsm)return;
-      if(!h.dsms[dsm])h.dsms[dsm]={territory:terr||null,reps:[]};
-      if(terr)h.dsms[dsm].territory=terr;
-      if(!h.dsms[dsm].reps.includes(rep))h.dsms[dsm].reps.push(rep);
-      count++;
-    });
-    saveHierarchy(h);
-    renderHierarchySetup();
-    rebuildDSMSelector();
-    renderDSMDash();
-    toast(`Imported ${count} rep assignments`,'ok');
-  };
-  reader.readAsText(file);
+  const isExcel=/\.(xlsx|xls)$/i.test(file.name);
+  if(isExcel){
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      try{
+        const wb=XLSX.read(ev.target.result,{type:'array'});
+        const ws=wb.Sheets[wb.SheetNames[0]];
+        const rows=XLSX.utils.sheet_to_json(ws,{header:1,defval:''});
+        parseHierarchyRows(rows);
+      } catch(err){ toast('Could not read Excel file: '+err.message,'err'); }
+    };
+    reader.readAsArrayBuffer(file);
+  } else {
+    const reader=new FileReader();
+    reader.onload=ev=>{
+      const lines=ev.target.result.trim().split('\n').filter(l=>l.trim());
+      const rows=lines.map(l=>l.split(',').map(c=>c.trim().replace(/"/g,'')));
+      parseHierarchyRows(rows);
+    };
+    reader.readAsText(file);
+  }
   e.target.value='';
 }
 
