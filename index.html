@@ -1234,8 +1234,8 @@ async function loadUploadHistory(){
       uploadHistory = data2 || [];
     }
   }
-  // Set accounts from latest snapshot — empty array if no uploads yet for this DP
-  D.accounts = uploadHistory.length > 0 ? uploadHistory[uploadHistory.length-1].accounts : [];
+  // Set accounts from latest snapshot — fall back to SEED_DATA so DSM/dashboard views render immediately
+  D.accounts = uploadHistory.length > 0 ? uploadHistory[uploadHistory.length-1].accounts : [...SEED_DATA.accounts];
 }
 
 async function migrateLocalStorageToSupabase(){
